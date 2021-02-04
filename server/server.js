@@ -1,6 +1,7 @@
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const chalk = require("chalk");
 const app = require("./app");
 dotenv.config({ path: "./config.env" });
 

@@ -7,3 +7,5 @@ const app = express();
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 app.use(morgan("dev"));
+
+module.exports = app;
