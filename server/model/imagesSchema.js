@@ -4,7 +4,7 @@ const imagesSchema = new mongoose.Schema({
 	title: {
 		type: String,
 	},
-	creator: {
+	albumId: {
 		type: mongoose.Types.ObjectId,
 		required: true,
 		ref: "Albums",

@@ -1,11 +1,95 @@
+const Albums = require("../model/albumsSchema");
 const User = require("../model/usersSchema");
+const AppError = require("../utils/appError");
 
-exports.getAllUsers = async (req, res) => {};
+exports.getAlbumsByUserId = async (req, res, next) => {
+	const userId = req.params.id;
 
-exports.getUserById = async (req, res) => {};
+	let existingUser;
+	try {
+		existingUser = await User.findById(userId);
+	} catch (error) {
+		return next(
+			new AppError("Fetching user failed, please try again later.", 404)
+		);
+	}
 
-exports.createUser = async (req, res) => {};
+	if (!existingUser) {
+		return next(new AppError("Could not find user for provided id", 404));
+	}
 
-exports.updateUser = async (req, res) => {};
+	let userAlbums;
+	try {
+		userAlbums = await Albums.find({ creator: userId });
+	} catch (error) {
+		return new AppError("Fetching user failed, please try again later.", 404);
+	}
 
-exports.deleteUser = async (req, res) => {};
+	if (!userAlbums || userAlbums.length === 0) {
+		return new AppError(
+			"Could not find user albums for the provided user id",
+			404
+		);
+	}
+
+	res.status(200).json({
+		albums: userAlbums,
+	});
+};
+
+exports.getAlbumById = async (req, res, next) => {
+	const albumId = req.params.album;
+
+	let album;
+	try {
+		album = await Albums.findById(albumId);
+	} catch (error) {
+		return next(
+			new AppError("Fetching album failed, please try again later", 401)
+		);
+	}
+
+	if (!album) {
+		return next(AppError("Could not find album for provided id", 404));
+	}
+
+	res.status(200).json({
+		album,
+	});
+};
+
+exports.createAlbums = async (req, res, next) => {
+	console.log(req.body);
+
+	let user;
+
+	try {
+		user = await User.findById(req.body.creator);
+	} catch (error) {
+		return next(
+			new AppError("Fetching album failed, please try again later", 500)
+		);
+	}
+
+	if (!user) {
+		return next(new AppError("Could not find user for provided id", 404));
+	}
+
+	try {
+		const newAlbum = await Albums.create(req.body);
+
+		res.status(200).json({
+			album: newAlbum,
+		});
+	} catch (error) {
+		return next(
+			new AppError("Could not create album, please check your credentials", 404)
+		);
+	}
+};
+
+exports.updateAlbumById = async (req, res, next) => {};
+
+exports.deleteAlbumAndImagesById = async (req, res, next) => {};
+
+exports.deleteAlbumsByUserId = async (req, res, next) => {};
