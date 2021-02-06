@@ -6,9 +6,14 @@ const albumsSchema = new mongoose.Schema({
 		trim: true,
 		required: [true, "title name is required"],
 	},
+	address: { type: String, required: true },
 	description: {
 		type: String,
 		trim: true,
+	},
+	location: {
+		lat: { type: Number, required: true },
+		lng: { type: Number, required: true },
 	},
 	createAt: {
 		type: String,

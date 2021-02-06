@@ -7,7 +7,7 @@ const router = express.Router();
 router
 	.route("/user/:id")
 	.get(albumsController.getAlbumsByUserId)
-	.delete(albumsController.deleteAlbumsByUserId);
+	.delete(albumsController.deleteAllAlbumsByUserId);
 
 router.route("/").post(albumsController.createAlbums);
 
