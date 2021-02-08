@@ -64,6 +64,12 @@ exports.updateUser = async (req, res, next) => {
 		return next(new AppError('Could not find user for provided id.', 404));
 	}
 
+	if (req.user._id.toString() !== existingUser._id.toString()) {
+		return next(
+			new AppError('You dont have permission to update this user', 401)
+		);
+	}
+
 	try {
 		const userUpdate = await User.findByIdAndUpdate(id, req.body, {
 			new: true,
@@ -80,6 +86,10 @@ exports.updateUser = async (req, res, next) => {
 };
 
 exports.deleteUser = async (req, res, next) => {
+	if (req.user._id.toString() !== req.params.id.toString()) {
+		return next(new AppError('You dont have permission to delete user!!', 401));
+	}
+
 	try {
 		await User.findByIdAndDelete(req.params.id);
 

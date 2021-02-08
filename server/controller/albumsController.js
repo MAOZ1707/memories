@@ -1,8 +1,9 @@
-const Albums = require("../model/albumsSchema");
-const User = require("../model/usersSchema");
-// const Image = require('')
-const AppError = require("../utils/appError");
-const getCoordsForAddress = require("../utils/location");
+const { validationResult } = require('express-validator');
+const Albums = require('../model/albumsSchema');
+const User = require('../model/usersSchema');
+const Images = require('../model/imagesSchema');
+const AppError = require('../utils/appError');
+const getCoordsForAddress = require('../utils/location');
 
 exports.getAlbumsByUserId = async (req, res, next) => {
 	const userId = req.params.id;
@@ -12,24 +13,24 @@ exports.getAlbumsByUserId = async (req, res, next) => {
 		existingUser = await User.findById(userId);
 	} catch (error) {
 		return next(
-			new AppError("Fetching user failed, please try again later.", 404)
+			new AppError('Fetching user failed, please try again later.', 404)
 		);
 	}
 
 	if (!existingUser) {
-		return next(new AppError("Could not find user for provided id", 404));
+		return next(new AppError('Could not find user for provided id', 404));
 	}
 
 	let userAlbums;
 	try {
 		userAlbums = await Albums.find({ creator: userId });
 	} catch (error) {
-		return new AppError("Fetching user failed, please try again later.", 404);
+		return new AppError('Fetching user failed, please try again later.', 404);
 	}
 
 	if (!userAlbums || userAlbums.length === 0) {
 		return new AppError(
-			"Could not find user albums for the provided user id",
+			'Could not find user albums for the provided user id',
 			404
 		);
 	}
@@ -42,19 +43,23 @@ exports.getAlbumsByUserId = async (req, res, next) => {
 exports.getAlbumById = async (req, res, next) => {
 	const albumId = req.params.id;
 
-	console.log(albumId);
-
 	let album;
 	try {
 		album = await Albums.findById(albumId);
 	} catch (error) {
 		return next(
-			new AppError("Fetching album failed, please try again later", 401)
+			new AppError('Fetching album failed, please try again later', 401)
 		);
 	}
 
 	if (!album) {
-		return next(new AppError("Could not find album for provided id", 404));
+		return next(new AppError('Could not find album for provided id', 404));
+	}
+
+	if (req.user._id.toString() !== album.creator.toString()) {
+		return next(
+			new AppError('You dont have permission to get this album', 401)
+		);
 	}
 
 	res.status(200).json({
@@ -63,20 +68,31 @@ exports.getAlbumById = async (req, res, next) => {
 };
 
 exports.createAlbums = async (req, res, next) => {
-	console.log(req.body);
-
 	let user;
+
+	const errors = validationResult(req);
+	if (!errors.isEmpty()) {
+		return next(
+			new AppError('Invalid inputs passed, please check your data.', 400)
+		);
+	}
 
 	try {
 		user = await User.findById(req.body.creator);
 	} catch (error) {
 		return next(
-			new AppError("Fetching album failed, please try again later", 500)
+			new AppError('Fetching album failed, please try again later', 500)
 		);
 	}
 
 	if (!user) {
-		return next(new AppError("Could not find user for provided id", 404));
+		return next(new AppError('Could not find user for provided id', 404));
+	}
+
+	if (req.user._id.toString() !== user._id.toString()) {
+		return next(
+			new AppError('You dont have permission to create this album', 401)
+		);
 	}
 
 	let coordinates;
@@ -100,7 +116,7 @@ exports.createAlbums = async (req, res, next) => {
 		});
 	} catch (error) {
 		return next(
-			new AppError("Could not create album, please check your credentials", 404)
+			new AppError('Could not create album, please check your credentials', 404)
 		);
 	}
 };
@@ -108,18 +124,30 @@ exports.createAlbums = async (req, res, next) => {
 exports.updateAlbumById = async (req, res, next) => {
 	const albumId = req.params.id;
 
-	console.log(albumId);
+	const errors = validationResult(req);
+	if (!errors.isEmpty()) {
+		return next(
+			new AppError('Invalid inputs passed, please check your data.', 400)
+		);
+	}
 
 	let album;
 	try {
 		album = await Albums.findById(albumId);
 	} catch (error) {
-		return next(new AppError("Something went wrong, could not update album"));
+		return next(new AppError('Something went wrong, could not update album'));
 	}
 
 	if (!album) {
-		return next(new AppError("Could not find album for provided id"));
+		return next(new AppError('Could not find album for provided id'));
 	}
+
+	if (req.user._id.toString() !== album.creator.toString()) {
+		return next(
+			new AppError('You dont have permission to update this album', 401)
+		);
+	}
+
 	try {
 		const updates = {
 			title: req.body.title,
@@ -135,31 +163,34 @@ exports.updateAlbumById = async (req, res, next) => {
 			album: updateAlbum,
 		});
 	} catch (error) {
-		return new AppError("Something went wrong, could not update album", 401);
+		return new AppError('Something went wrong, could not update album', 401);
 	}
 };
 
 exports.deleteAlbumAndImagesById = async (req, res, next) => {
 	const albumId = req.params.id;
 
-	console.log(albumId);
-
 	let album;
 	try {
 		album = await Albums.findById(albumId);
 	} catch (error) {
-		return next(new AppError("Something went wrong, could not find album"));
+		return next(new AppError('Something went wrong, could not find album'));
 	}
 
 	if (!album) {
-		return next(new AppError("Could not find album for provided id"));
+		return next(new AppError('Could not find album for provided id'));
 	}
 
+	if (req.user._id.toString() !== album.creator.toString()) {
+		return next(
+			new AppError('You dont have permission to delete this album', 401)
+		);
+	}
 	try {
 		await Albums.findByIdAndDelete(albumId);
 		await Images.findByIdAndDelete({ albumId: albumId });
 	} catch (error) {
-		return next(new AppError("Something went wrong when, cannot delete album"));
+		return next(new AppError('Something went wrong when, cannot delete album'));
 	}
 };
 
