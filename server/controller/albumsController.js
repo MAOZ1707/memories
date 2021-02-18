@@ -1,7 +1,7 @@
 const { validationResult } = require('express-validator');
 const Albums = require('../model/albumsSchema');
 const User = require('../model/usersSchema');
-const Images = require('../model/imagesSchema');
+// const Images = require('../model/imagesSchema');
 const AppError = require('../utils/appError');
 const getCoordsForAddress = require('../utils/location');
 
@@ -170,12 +170,16 @@ exports.updateAlbumById = async (req, res, next) => {
 exports.deleteAlbumAndImagesById = async (req, res, next) => {
 	const albumId = req.params.id;
 
+	console.log(albumId);
+
 	let album;
 	try {
 		album = await Albums.findById(albumId);
 	} catch (error) {
 		return next(new AppError('Something went wrong, could not find album'));
 	}
+
+	console.log(album);
 
 	if (!album) {
 		return next(new AppError('Could not find album for provided id'));
@@ -186,9 +190,11 @@ exports.deleteAlbumAndImagesById = async (req, res, next) => {
 			new AppError('You dont have permission to delete this album', 401)
 		);
 	}
+
 	try {
 		await Albums.findByIdAndDelete(albumId);
-		await Images.findByIdAndDelete({ albumId: albumId });
+		// await Images.findByIdAndDelete({ albumId: albumId });
+		res.status(200).json({ message: 'Deleted album.' });
 	} catch (error) {
 		return next(new AppError('Something went wrong when, cannot delete album'));
 	}
