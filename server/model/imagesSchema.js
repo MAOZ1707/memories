@@ -1,16 +1,20 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const imagesSchema = new mongoose.Schema({
 	imageUrl: {
 		type: String,
 	},
+	like: {
+		type: Boolean,
+		default: false,
+	},
 	albumId: {
 		type: mongoose.Types.ObjectId,
 		required: true,
-		ref: "Albums",
+		ref: 'Albums',
 	},
 });
 
-const Images = mongoose.model("Images", imagesSchema);
+const Images = mongoose.model('Images', imagesSchema);
 
 module.exports = Images;

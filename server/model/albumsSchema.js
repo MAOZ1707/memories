@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const albumsSchema = new mongoose.Schema({
 	title: {
 		type: String,
 		trim: true,
-		required: [true, "title name is required"],
+		required: [true, 'title name is required'],
 	},
 	address: { type: String, required: true },
 	description: {
@@ -21,10 +21,14 @@ const albumsSchema = new mongoose.Schema({
 	creator: {
 		type: mongoose.Types.ObjectId,
 		required: true,
-		ref: "User",
+		ref: 'User',
+	},
+	like: {
+		type: Boolean,
+		default: false,
 	},
 });
 
-const Albums = mongoose.model("Albums", albumsSchema);
+const Albums = mongoose.model('Albums', albumsSchema);
 
 module.exports = Albums;

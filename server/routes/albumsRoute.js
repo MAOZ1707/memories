@@ -28,9 +28,11 @@ router
 	.get(albumsController.getAlbumById)
 	.patch(
 		body('title').notEmpty().isString(),
-		body('address').notEmpty().isString(),
+		body('description').notEmpty().isString(),
 		albumsController.updateAlbumById
 	)
 	.delete(albumsController.deleteAlbumAndImagesById);
+
+router.route('/:id/like-album').patch(albumsController.likeAlbum);
 
 module.exports = router;

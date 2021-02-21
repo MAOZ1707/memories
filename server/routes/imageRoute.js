@@ -6,6 +6,8 @@ const imagesController = require('../controller/imageController');
 
 const checkAuth = require('../middleware/checkAuth');
 
+const parser = require('../middleware/cloudinary');
+
 const router = express.Router();
 
 router.use(checkAuth);
@@ -13,7 +15,8 @@ router.use(checkAuth);
 router
 	.route('/album/:id')
 	.get(imagesController.getImagesByAlbumId)
-	.delete(imagesController.deleteAllImages);
+	.delete(imagesController.deleteAllImages)
+	.post(parser.array('imageUrl'), imagesController.uploadImages);
 
 router
 	.route('/')

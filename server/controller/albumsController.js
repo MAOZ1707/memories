@@ -124,6 +124,8 @@ exports.createAlbums = async (req, res, next) => {
 exports.updateAlbumById = async (req, res, next) => {
 	const albumId = req.params.id;
 
+	console.log(req.body);
+
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 		return next(
@@ -196,7 +198,46 @@ exports.deleteAlbumAndImagesById = async (req, res, next) => {
 		// await Images.findByIdAndDelete({ albumId: albumId });
 		res.status(200).json({ message: 'Deleted album.' });
 	} catch (error) {
-		return next(new AppError('Something went wrong when, cannot delete album'));
+		return next(
+			new AppError('Something went wrong when, cannot delete album'),
+			500
+		);
+	}
+};
+
+exports.likeAlbum = async (req, res, next) => {
+	const albumId = req.params.id;
+	// 1- find album
+	let album;
+	try {
+		album = await Albums.findById(albumId);
+	} catch (error) {
+		return next(new AppError('Something went wrong, please try later.'), 500);
+	}
+
+	if (!album) {
+		return next(new AppError('Could not find album!'), 404);
+	}
+	console.log(album._id);
+	// 2- toggle the current state   false->true, true->false
+
+	try {
+		const toggleLike = await Albums.findByIdAndUpdate(
+			albumId,
+			{ like: !album.like },
+			{
+				new: true,
+			}
+		);
+
+		res.status(200).json({
+			album: toggleLike,
+		});
+	} catch (error) {
+		return next(
+			new AppError('Could not update this album, please try agin later'),
+			400
+		);
 	}
 };
 
