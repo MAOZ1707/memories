@@ -27,4 +27,6 @@ router
 	.get(imagesController.getImageById)
 	.delete(imagesController.deleteImageById);
 
+router.route('/:id/like-image').patch(imagesController.likeImage);
+
 module.exports = router;

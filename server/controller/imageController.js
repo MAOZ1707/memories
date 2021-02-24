@@ -139,7 +139,7 @@ exports.deleteImageById = async (req, res, next) => {
 	let album;
 	try {
 		const image = await Images.findById(imageId);
-		album = image.albumId;
+		album = await Albums.findById(image.albumId);
 	} catch (error) {
 		return next(
 			new AppError('Something went wrong, Could not find images', 404)
@@ -153,7 +153,7 @@ exports.deleteImageById = async (req, res, next) => {
 	}
 
 	try {
-		await Images.deleteImageById(imageId);
+		await Images.findByIdAndDelete(imageId);
 		res.status(200).json({
 			image: null,
 		});
@@ -166,7 +166,8 @@ exports.deleteImageById = async (req, res, next) => {
 
 exports.likeImage = async (req, res, next) => {
 	const imageId = req.params.id;
-	// 1- find album
+	console.log(imageId);
+
 	let image;
 	try {
 		image = await Images.findById(imageId);
