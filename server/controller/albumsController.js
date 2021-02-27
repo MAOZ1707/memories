@@ -69,14 +69,6 @@ exports.getAlbumById = async (req, res, next) => {
 
 exports.createAlbums = async (req, res, next) => {
 	let user;
-
-	const errors = validationResult(req);
-	if (!errors.isEmpty()) {
-		return next(
-			new AppError('Invalid inputs passed, please check your data.', 400)
-		);
-	}
-
 	try {
 		user = await User.findById(req.body.creator);
 	} catch (error) {
@@ -102,12 +94,27 @@ exports.createAlbums = async (req, res, next) => {
 		return next(error);
 	}
 
+	let imageFile;
+	try {
+		imageFile = req.file.path;
+	} catch (error) {
+		return next(
+			new AppError('Something went wrong, please try again later.', 500)
+		);
+	}
+
+	if (!imageFile) {
+		return next(new AppError('Peak image is required', 401));
+	}
+
 	try {
 		const newAlbum = await Albums.create({
 			title: req.body.title,
 			description: req.body.description,
 			address: req.body.address,
 			location: coordinates,
+			image: imageFile,
+			createAt: new Date(),
 			creator: req.body.creator,
 		});
 

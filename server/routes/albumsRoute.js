@@ -6,6 +6,8 @@ const checkAuth = require('../middleware/checkAuth');
 
 const albumsController = require('../controller/albumsController');
 
+const parser = require('../middleware/cloudinary');
+
 const router = express.Router();
 
 router.use(checkAuth);
@@ -20,6 +22,7 @@ router
 	.post(
 		body('title').notEmpty().isString(),
 		body('address').notEmpty().isString(),
+		parser.single('image'),
 		albumsController.createAlbums
 	);
 

@@ -204,6 +204,8 @@ exports.likeImage = async (req, res, next) => {
 exports.uploadImages = async (req, res, next) => {
 	const albumId = req.params.id;
 
+	console.log(req.body.files);
+
 	let album;
 	try {
 		album = await Albums.findById(albumId);
@@ -239,6 +241,38 @@ exports.uploadImages = async (req, res, next) => {
 			});
 
 			return res.status(200).json({ image: testImage });
+		});
+	} catch (error) {
+		return next(new AppError('loop fail'));
+	}
+};
+
+exports.upload = async (req, res, next) => {
+	// const imageFiles = req.files;
+	const albumId = req.params.id;
+
+	let images;
+	try {
+		images = await req.files;
+	} catch (error) {
+		return next(
+			new AppError('Something went wrong, pleas try again late', 500)
+		);
+	}
+
+	if (!images || images.length === 0) {
+		return next(new AppError('please upload images'));
+	}
+
+	try {
+		images.forEach(async (img) => {
+			const newImages = await Images.create({
+				imageUrl: img.path,
+				albumId: albumId,
+				like: false,
+			});
+
+			return res.status(200).json({ image: newImages });
 		});
 	} catch (error) {
 		return next(new AppError('loop fail'));

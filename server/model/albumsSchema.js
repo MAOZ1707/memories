@@ -15,6 +15,10 @@ const albumsSchema = new mongoose.Schema({
 		lat: { type: Number, required: true },
 		lng: { type: Number, required: true },
 	},
+	image: {
+		type: String,
+		required: true,
+	},
 	createAt: {
 		type: String,
 	},
