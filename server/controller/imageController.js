@@ -178,8 +178,6 @@ exports.likeImage = async (req, res, next) => {
 	if (!image) {
 		return next(new AppError('Could not find album!'), 404);
 	}
-	console.log(image._id);
-	// 2- toggle the current state   false->true, true->false
 
 	try {
 		const toggleLike = await Images.findByIdAndUpdate(
@@ -276,5 +274,29 @@ exports.upload = async (req, res, next) => {
 		});
 	} catch (error) {
 		return next(new AppError('loop fail'));
+	}
+};
+
+exports.addImageStyle = async (req, res, next) => {
+	const imageId = req.params.id;
+
+	console.log(req.body);
+	try {
+		const addFilters = await Images.findByIdAndUpdate(
+			imageId,
+			{ filters: req.body },
+			{
+				new: true,
+			}
+		);
+
+		res.status(200).json({
+			image: addFilters,
+		});
+	} catch (error) {
+		return next(
+			new AppError('Could not update this image, please try agin later'),
+			400
+		);
 	}
 };

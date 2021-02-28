@@ -7,7 +7,7 @@ const imagesController = require('../controller/imageController');
 const checkAuth = require('../middleware/checkAuth');
 
 const parser = require('../middleware/cloudinary');
-const store = require('../middleware/multer');
+// const store = require('../middleware/multer');
 
 const router = express.Router();
 
@@ -29,6 +29,9 @@ router
 	.delete(imagesController.deleteImageById);
 
 router.route('/:id/like-image').patch(imagesController.likeImage);
+
+router.route('/:id/studio').patch(imagesController.addImageStyle);
+
 router
 	.route('/album/:id/upload')
 	.post(parser.any('images', 6), imagesController.upload);

@@ -8,6 +8,9 @@ const imagesSchema = new mongoose.Schema({
 		type: Boolean,
 		default: false,
 	},
+	filters: {
+		type: Object,
+	},
 	albumId: {
 		type: mongoose.Types.ObjectId,
 		required: true,
