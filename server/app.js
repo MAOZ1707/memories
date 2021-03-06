@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const chalk = require('chalk');
+const fileupload = require('express-fileupload');
 
 const app = express();
 
@@ -14,6 +15,7 @@ const imagesRouter = require('./routes/imageRoute');
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(fileupload());
 
 // Route
 app.use('/api/users', usersRouter);

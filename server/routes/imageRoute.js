@@ -17,7 +17,7 @@ router
 	.route('/album/:id')
 	.get(imagesController.getImagesByAlbumId)
 	.delete(imagesController.deleteAllImages)
-	.post(parser.array('imageUrl', 6), imagesController.uploadImages);
+	.post(parser.array('imageUrl', 4), imagesController.uploadImages);
 
 router
 	.route('/')
@@ -34,6 +34,6 @@ router.route('/:id/studio').patch(imagesController.addImageStyle);
 
 router
 	.route('/album/:id/upload')
-	.post(parser.any('images', 6), imagesController.upload);
+	.post(parser.any('images', 4), imagesController.upload);
 
 module.exports = router;

@@ -200,49 +200,50 @@ exports.likeImage = async (req, res, next) => {
 };
 
 exports.uploadImages = async (req, res, next) => {
-	const albumId = req.params.id;
+	// const albumId = req.params.id;
 
-	console.log(req.body.files);
+	console.log(req.files);
+	console.log(req.file);
 
-	let album;
-	try {
-		album = await Albums.findById(albumId);
-	} catch (error) {
-		return next(
-			new AppError('Fetching album failed, please try again later', 500)
-		);
-	}
+	// let album;
+	// try {
+	// 	album = await Albums.findById(albumId);
+	// } catch (error) {
+	// 	return next(
+	// 		new AppError('Fetching album failed, please try again later', 500)
+	// 	);
+	// }
 
-	if (!album) {
-		return next(new AppError('Could not find album for provided id', 404));
-	}
+	// if (!album) {
+	// 	return next(new AppError('Could not find album for provided id', 404));
+	// }
 
-	let images;
-	try {
-		images = await req.files;
-	} catch (error) {
-		return next(
-			new AppError('Something went wrong, pleas try again late', 500)
-		);
-	}
+	// let images;
+	// try {
+	// 	images = await req.files;
+	// } catch (error) {
+	// 	return next(
+	// 		new AppError('Something went wrong, pleas try again late', 500)
+	// 	);
+	// }
 
-	if (!images || images.length === 0) {
-		return next(new AppError('please upload image/s'));
-	}
+	// if (!images || images.length === 0) {
+	// 	return next(new AppError('please upload image/s'));
+	// }
 
-	try {
-		images.forEach(async (img) => {
-			const testImage = await Images.create({
-				imageUrl: img.path,
-				albumId: albumId,
-				like: false,
-			});
+	// try {
+	// 	images.forEach(async (img) => {
+	// 		const testImage = await Images.create({
+	// 			imageUrl: img.path,
+	// 			albumId: albumId,
+	// 			like: false,
+	// 		});
 
-			return res.status(200).json({ image: testImage });
-		});
-	} catch (error) {
-		return next(new AppError('loop fail'));
-	}
+	// 		return res.status(200).json({ image: testImage });
+	// 	});
+	// } catch (error) {
+	// 	return next(new AppError('loop fail'));
+	// }
 };
 
 exports.upload = async (req, res, next) => {
