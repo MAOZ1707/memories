@@ -16,7 +16,7 @@ const storage = new CloudinaryStorage({
 	cloudinary: cloudinary,
 	params: {
 		folder: 'memories/images',
-		allowedFormats: ['jpg', 'jpeg', 'png', 'mp4', 'mov'],
+		allowedFormats: ['jpg', 'jpeg', 'png'],
 		type: 'authenticated',
 	},
 });

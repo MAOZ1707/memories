@@ -1,29 +1,25 @@
+const aws = require('aws-sdk');
 const multer = require('multer');
-const { v4: uuidv4 } = require('uuid');
+const multerS3 = require('multer-s3');
 
-const MIME_TYPE_MAP = {
-	'image/png': 'png',
-	'image/jpeg': 'jpeg',
-	'image/jpg': 'jpg',
-};
-
-const store = multer({
-	limits: 500000,
-	storage: multer.diskStorage({
-		destination: (req, file, cb) => {
-			cb(null, '/');
-		},
-		filename: (req, file, cb) => {
-			const ext = MIME_TYPE_MAP[file.mimetype];
-			cb(null, `${uuidv4()}.${ext}`);
-		},
-	}),
-
-	fileFilter: (req, file, cb) => {
-		const isValid = !!MIME_TYPE_MAP[file.mimetype];
-		const error = isValid ? null : new Error('Invalid mime type!');
-		cb(error, isValid);
-	},
+const s3 = new aws.S3({
+	accessKeyId: 'AKIAJKGZVGV4Y2C56PYA',
+	secretAccessKey: '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',
 });
 
-module.exports = store;
+const uploadS3 = multer({
+	storage: multerS3({
+		s3: s3,
+		bucket: 'memories-photos',
+		acl: 'public-read',
+		contentType: multerS3.AUTO_CONTENT_TYPE,
+		metadata: function (req, file, cb) {
+			cb(null, { fieldName: file.fieldname });
+		},
+		key: function (req, file, cb) {
+			cb(null, Date.now().toString());
+		},
+	}),
+});
+
+module.exports = uploadS3;

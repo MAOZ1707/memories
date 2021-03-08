@@ -1,23 +1,23 @@
+/* eslint-disable no-useless-escape */
 const express = require('express');
 
 const { body } = require('express-validator');
 
 const imagesController = require('../controller/imageController');
 
+const uploadS3 = require('../middleware/multer');
+
 const checkAuth = require('../middleware/checkAuth');
 
-const parser = require('../middleware/cloudinary');
-// const store = require('../middleware/multer');
+// const parser = require('../middleware/cloudinary');
 
 const router = express.Router();
 
 router.use(checkAuth);
-
 router
 	.route('/album/:id')
 	.get(imagesController.getImagesByAlbumId)
-	.delete(imagesController.deleteAllImages)
-	.post(parser.array('imageUrl', 4), imagesController.uploadImages);
+	.delete(imagesController.deleteAllImages);
 
 router
 	.route('/')
@@ -34,6 +34,6 @@ router.route('/:id/studio').patch(imagesController.addImageStyle);
 
 router
 	.route('/album/:id/upload')
-	.post(parser.any('images', 4), imagesController.upload);
+	.post(uploadS3.array('image', 4), imagesController.uploadImages);
 
 module.exports = router;
