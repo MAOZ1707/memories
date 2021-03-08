@@ -1,0 +1,67 @@
+.error-message {
+  color: #912424;
+  background-color: rgba(255, 0, 0, 0.253);
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  font-size: 00.8rem;
+  text-align: center;
+  -webkit-animation: grow 0.3s ease;
+          animation: grow 0.3s ease;
+}
+
+@-webkit-keyframes grow {
+  0% {
+    -webkit-transform: scale(0) translateX(80px);
+            transform: scale(0) translateX(80px);
+  }
+  20% {
+    -webkit-transform: scale(1) translateX(-80px);
+            transform: scale(1) translateX(-80px);
+  }
+  40% {
+    -webkit-transform: scale(1) translateX(80px);
+            transform: scale(1) translateX(80px);
+  }
+  60% {
+    -webkit-transform: scale(1) translateX(-80px);
+            transform: scale(1) translateX(-80px);
+  }
+  80% {
+    -webkit-transform: scale(1) translateX(80px);
+            transform: scale(1) translateX(80px);
+  }
+  100% {
+    -webkit-transform: scale(1) translateX(-80px);
+            transform: scale(1) translateX(-80px);
+  }
+}
+
+@keyframes grow {
+  0% {
+    -webkit-transform: scale(0) translateX(80px);
+            transform: scale(0) translateX(80px);
+  }
+  20% {
+    -webkit-transform: scale(1) translateX(-80px);
+            transform: scale(1) translateX(-80px);
+  }
+  40% {
+    -webkit-transform: scale(1) translateX(80px);
+            transform: scale(1) translateX(80px);
+  }
+  60% {
+    -webkit-transform: scale(1) translateX(-80px);
+            transform: scale(1) translateX(-80px);
+  }
+  80% {
+    -webkit-transform: scale(1) translateX(80px);
+            transform: scale(1) translateX(80px);
+  }
+  100% {
+    -webkit-transform: scale(1) translateX(-80px);
+            transform: scale(1) translateX(-80px);
+  }
+}
+/*# sourceMappingURL=errorMsg.css.map */

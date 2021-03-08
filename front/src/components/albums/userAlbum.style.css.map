@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAC;EACZ,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;CACZ;;AACD,AAAA,kBAAkB,CAAC;EAClB,OAAO,EAAE,GAAG;EACZ,QAAQ,EAAE,QAAQ;EAClB,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,MAAM;EACvB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;CACZ",
+    "sources": [
+        "userAlbum.style.scss"
+    ],
+    "names": [],
+    "file": "userAlbum.style.css"
+}

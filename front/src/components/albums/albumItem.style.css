@@ -1,0 +1,276 @@
+.album-card-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.album-container-layout {
+  display: -ms-grid;
+  display: grid;
+  padding: 10px;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 1fr;
+  width: 100%;
+  height: auto;
+  gap: 20px;
+}
+
+.control-panel {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: auto;
+}
+
+.control-panel .creation-date {
+  font-size: 1rem;
+  margin-left: 10px;
+}
+
+.control-panel button {
+  background: none;
+  border: none;
+  padding: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.control-panel button img {
+  width: 20px;
+  height: 20px;
+}
+
+.control-panel .delete-btn-icon img {
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.control-panel .delete-btn-icon img:hover {
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transform: rotate(180deg) scale(1.1);
+          transform: rotate(180deg) scale(1.1);
+}
+
+.control-panel .edit-btn-icon img {
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.control-panel .edit-btn-icon img:hover {
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transform: rotate(-95deg) scale(1.1);
+          transform: rotate(-95deg) scale(1.1);
+}
+
+.gps-marker {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.address-on-map {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.8rem;
+  height: 3px;
+  width: auto;
+  font-weight: 600;
+}
+
+.album-information {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: black;
+  background: white;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.album-information .info-sub-title {
+  font-size: 0.8rem;
+  color: #7a7a7a;
+}
+
+.album-information .card-album-title {
+  color: #373b3f;
+  font-size: 1.2rem;
+}
+
+.action-panel {
+  padding: 0 20px;
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.action-panel .like-btn {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.action-panel .like-btn .like-img {
+  width: 20px;
+  cursor: pointer;
+  height: 20px;
+}
+
+.action-panel .location-btn {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.action-panel .location-btn .location-img {
+  width: 20px;
+  cursor: pointer;
+  height: 20px;
+}
+
+.album-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.album-main .map-container {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translate(-1000px, 1000px);
+          transform: translate(-1000px, 1000px);
+  -webkit-transition: 1.7s ease;
+  transition: 1.7s ease;
+}
+
+.album-main .active {
+  -webkit-transform: scale(1) translate(0px, 0px);
+          transform: scale(1) translate(0px, 0px);
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.album-main .image-container {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.album-main .image-container:hover .card-info-text {
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+}
+
+.album-main .image-container .main-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+
+.album-main .image-container .card-info-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  background-color: rgba(3, 3, 3, 0.705);
+  -webkit-transform: translateY(1000px);
+          transform: translateY(1000px);
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.album-main .image-container .card-info-text .image-btn {
+  background-color: #b026f093;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  outline: none;
+  color: #fff;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.album-main .image-container .card-info-text .image-btn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background-color: #a626f0ec;
+  -webkit-box-shadow: 0 2px 8px rgba(255, 38, 219, 0.74);
+          box-shadow: 0 2px 8px rgba(255, 38, 219, 0.74);
+}
+
+.album-main .image-container .card-info-text a {
+  color: #fff;
+}
+/*# sourceMappingURL=albumItem.style.css.map */

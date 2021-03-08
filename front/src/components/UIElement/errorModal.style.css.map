@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "errorModal.style.scss"
+    ],
+    "names": [],
+    "file": "errorModal.style.css"
+}

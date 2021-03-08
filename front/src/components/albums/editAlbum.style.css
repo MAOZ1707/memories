@@ -1,0 +1,137 @@
+.edit-album-container {
+  background: rgba(0, 0, 0, 0.856);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  color: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  padding: 20px;
+}
+
+.edit-album-container .update-album-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.edit-album-container .edit-confirm-message {
+  font-weight: 400;
+  line-height: 25px;
+  font-size: 1rem;
+}
+
+.edit-album-container .edit-album-buttons {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 150px;
+}
+
+.edit-album-container .edit-album-buttons .confirm-edit-btn {
+  background-color: #269ff093;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  outline: none;
+  color: #fff;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.edit-album-container .edit-album-buttons .confirm-edit-btn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background-color: #268ef0ec;
+  -webkit-box-shadow: 0 2px 8px rgba(38, 175, 255, 0.74);
+          box-shadow: 0 2px 8px rgba(38, 175, 255, 0.74);
+}
+
+.edit-album-container .edit-album-buttons .cancel-edit-btn {
+  background-color: #fdfdfd93;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  outline: none;
+  color: black;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.edit-album-container .edit-album-buttons .cancel-edit-btn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background-color: #ffffffec;
+  -webkit-box-shadow: 0 2px 8px rgba(247, 247, 247, 0.582);
+          box-shadow: 0 2px 8px rgba(247, 247, 247, 0.582);
+}
+
+.update-album-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  width: 90%;
+}
+
+.update-album-form .update-error-message {
+  width: 100%;
+  color: white;
+  font-size: 0.8rem;
+  padding: 0 10px;
+  border-radius: 4px;
+  background-color: rgba(252, 16, 16, 0.61);
+}
+
+.update-album-form .update-album-label {
+  font-size: 0.8rem;
+}
+
+.update-album-form .update-album-form {
+  margin-bottom: 10px;
+  width: 100%;
+  height: 1.5rem;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  background: none;
+  color: #fff;
+  padding-left: 10px;
+}
+
+.update-album-form .textarea {
+  margin-bottom: 0;
+  height: 100px;
+  width: 100%;
+  resize: none;
+}
+/*# sourceMappingURL=editAlbum.style.css.map */

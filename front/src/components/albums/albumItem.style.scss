@@ -1,0 +1,195 @@
+.album-card-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.album-container-layout {
+	display: grid;
+	padding: 10px;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	grid-auto-rows: 1fr;
+	width: 100%;
+	height: auto;
+	gap: 20px;
+}
+
+.control-panel {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	height: auto;
+	.creation-date {
+		font-size: 1rem;
+		margin-left: 10px;
+	}
+	button {
+		background: none;
+		border: none;
+		padding: 5px;
+		margin-right: 10px;
+		cursor: pointer;
+		img {
+			width: 20px;
+			height: 20px;
+		}
+	}
+	.delete-btn-icon img {
+		transition: 0.3s ease;
+		&:hover {
+			transform-origin: center;
+			transform: rotate(180deg) scale(1.1);
+		}
+	}
+	.edit-btn-icon img {
+		transition: 0.3s ease;
+		&:hover {
+			transform-origin: center;
+			transform: rotate(-95deg) scale(1.1);
+		}
+	}
+}
+
+.gps-marker {
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+}
+.address-on-map {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.8rem;
+	height: 3px;
+	width: auto;
+	font-weight: 600;
+}
+.album-information {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	// position: relative;
+	color: rgb(0, 0, 0);
+	background: rgb(255, 255, 255);
+	width: 100%;
+	height: 60px;
+	margin-bottom: 10px;
+
+	.info-sub-title {
+		font-size: 0.8rem;
+		color: rgb(122, 122, 122);
+	}
+
+	.card-album-title {
+		color: rgb(55, 59, 63);
+		font-size: 1.2rem;
+	}
+}
+
+.action-panel {
+	padding: 0 20px;
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: space-between;
+
+	.like-btn {
+		border: none;
+		background: none;
+		outline: none;
+		.like-img {
+			width: 20px;
+			cursor: pointer;
+			height: 20px;
+		}
+	}
+
+	.location-btn {
+		border: none;
+		background: none;
+		outline: none;
+		.location-img {
+			width: 20px;
+			cursor: pointer;
+			height: 20px;
+		}
+	}
+}
+
+.album-main {
+	display: flex;
+	position: relative;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+
+	.map-container {
+		position: absolute;
+		overflow: hidden;
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		transform: translate(-1000px, 1000px);
+		transition: 1.7s ease;
+	}
+	.active {
+		transform: scale(1) translate(0px, 0px);
+		transition: all 1s ease;
+	}
+
+	.image-container {
+		position: relative;
+		overflow: hidden;
+		margin-bottom: 10px;
+		transition: 0.5s ease;
+
+		&:hover .card-info-text {
+			transform: translateY(0px);
+			transition: 0.4s ease;
+		}
+
+		.main-image {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			background-position: center;
+			object-fit: cover;
+			display: block;
+		}
+		.card-info-text {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0px;
+			color: rgb(255, 255, 255);
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			justify-content: space-evenly;
+			background-color: rgba(3, 3, 3, 0.705);
+			transform: translateY(1000px);
+			transition: all 1s ease;
+
+			.image-btn {
+				background-color: #b026f093;
+				border: none;
+				border-radius: 3px;
+				padding: 5px;
+				outline: none;
+				color: #fff;
+				transition: 0.2s ease-in-out;
+				&:hover {
+					transform: scale(1.1);
+					background-color: #a626f0ec;
+					box-shadow: 0 2px 8px rgba(255, 38, 219, 0.74);
+				}
+			}
+			a {
+				color: #fff;
+			}
+		}
+	}
+}

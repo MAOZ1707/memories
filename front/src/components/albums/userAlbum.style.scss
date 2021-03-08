@@ -1,0 +1,13 @@
+.albums-list {
+	width: 100%;
+	height: 100%;
+}
+.loading-indicator {
+	z-index: 100;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}

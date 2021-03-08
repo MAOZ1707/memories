@@ -1,0 +1,50 @@
+.main-nav-side-ber {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  height: 100vh;
+  width: 50%;
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.side-bar-animation-enter {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.side-bar-animation-enter-active {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+
+.side-bar-animation-exit {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+  opacity: 1;
+}
+
+.side-bar-animation-exit-active {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  opacity: 0;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+/*# sourceMappingURL=sideBar.style.css.map */

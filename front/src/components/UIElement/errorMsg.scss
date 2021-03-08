@@ -1,0 +1,32 @@
+.error-message {
+	color: rgb(145, 36, 36);
+	background-color: rgba(255, 0, 0, 0.253);
+	padding: 10px;
+	border-radius: 10px;
+	transform: scale(1);
+	font-size: 00.8rem;
+	text-align: center;
+	animation: grow 0.3s ease;
+}
+
+@keyframes grow {
+	0% {
+		transform: scale(0) translateX(80px);
+	}
+	20% {
+		transform: scale(1) translateX(-80px);
+	}
+	40% {
+		transform: scale(1) translateX(80px);
+	}
+	60% {
+		transform: scale(1) translateX(-80px);
+	}
+	80% {
+		transform: scale(1) translateX(80px);
+	}
+
+	100% {
+		transform: scale(1) translateX(-80px);
+	}
+} ;

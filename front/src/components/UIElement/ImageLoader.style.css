@@ -1,0 +1,153 @@
+.image-loader-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #f6f6f6;
+  border: 4px solid #7e7e7e;
+  -webkit-animation: backgroundImage 10s infinite;
+          animation: backgroundImage 10s infinite;
+}
+
+.image-loader-container::after {
+  content: '';
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ffcb22;
+  position: absolute;
+  top: 30px;
+  left: -300px;
+  -webkit-transform: translate(0);
+          transform: translate(0);
+  -webkit-animation: sun 10s infinite;
+          animation: sun 10s infinite;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+}
+
+.image-loader-container::before {
+  content: '';
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ececec;
+  position: absolute;
+  top: 30px;
+  left: -300px;
+  -webkit-transform: translate(0);
+          transform: translate(0);
+  -webkit-animation: moon 10s infinite;
+          animation: moon 10s infinite;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+}
+
+.image-loader-container .mount {
+  position: absolute;
+  bottom: 0;
+  left: -10px;
+  border-style: solid;
+  border-width: 0 95px 100px 95px;
+  border-color: transparent transparent #7c7c7c transparent;
+  -webkit-animation-name: smallMount;
+          animation-name: smallMount;
+}
+
+.image-loader-container .dark-mount {
+  position: absolute;
+  bottom: 0;
+  right: -50px;
+  border-style: solid;
+  border-width: 0 125px 150px 125px;
+  border-color: transparent transparent #b6b6b6 transparent;
+  -webkit-animation-name: bigMount;
+          animation-name: bigMount;
+}
+
+@-webkit-keyframes sun {
+  0% {
+    left: -300px;
+  }
+  50% {
+    left: 130px;
+  }
+  100% {
+    left: -300px;
+  }
+}
+
+@keyframes sun {
+  0% {
+    left: -300px;
+  }
+  50% {
+    left: 130px;
+  }
+  100% {
+    left: -300px;
+  }
+}
+
+@-webkit-keyframes moon {
+  0% {
+    left: -300px;
+  }
+  50% {
+    left: 130px;
+  }
+  100% {
+    left: -300px;
+  }
+}
+
+@keyframes moon {
+  0% {
+    left: -300px;
+  }
+  50% {
+    left: 130px;
+  }
+  100% {
+    left: -300px;
+  }
+}
+
+@-webkit-keyframes backgroundImage {
+  0% {
+    background: #494949;
+  }
+  50% {
+    background: white;
+  }
+  100% {
+    background: #555555;
+  }
+}
+
+@keyframes backgroundImage {
+  0% {
+    background: #494949;
+  }
+  50% {
+    background: white;
+  }
+  100% {
+    background: #555555;
+  }
+}
+/*# sourceMappingURL=ImageLoader.style.css.map */

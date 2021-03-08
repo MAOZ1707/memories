@@ -1,0 +1,185 @@
+.studio-container {
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+  height: calc(100vh - 50px);
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 2fr 1fr;
+      grid-template-rows: 2fr 1fr;
+}
+
+.studio-container .studio-filters-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.studio-main-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  border: none;
+}
+
+.studio-main-image .process-image {
+  -o-object-position: center;
+     object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: none;
+}
+
+.slider-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 15px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: white;
+  width: 100%;
+}
+
+.input-slider {
+  width: 80%;
+  -webkit-appearance: none;
+  height: 5px;
+  background: #2b2a2a;
+  outline: none;
+  border-radius: 5px;
+  opacity: 1;
+  -webkit-transition: 0.2s;
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+
+.input-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #3a3a3a;
+  border-radius: 50%;
+  background: #fcfcfc;
+  cursor: pointer;
+}
+
+.input-slider::-moz-range-thumb {
+  -moz-appearance: none;
+       appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #3a3a3a;
+  border-radius: 50%;
+  background: #fcfcfc;
+  cursor: pointer;
+}
+
+.filter-bar-items {
+  background-color: #dfdfdf;
+  border: none;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  padding: 5px;
+  width: auto;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.filter-bar-items:hover {
+  background-color: #36363571;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.filter-bar-items.active {
+  background: -webkit-gradient(linear, left top, right top, color-stop(27%, rgba(197, 50, 255, 0.617)), color-stop(82%, rgba(48, 11, 255, 0.486)));
+  background: linear-gradient(90deg, rgba(197, 50, 255, 0.617) 27%, rgba(48, 11, 255, 0.486) 82%);
+  color: #313131;
+  font-weight: 400;
+}
+
+.filter-bar-container {
+  margin-top: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  padding: 15px;
+  gap: 12px;
+  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #ffffff;
+}
+
+.save-button-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.save-filter {
+  width: 60%;
+  height: 2rem;
+  border-radius: 6px;
+  border: none;
+  color: #ffffff;
+  background-color: #3a3a3a;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.save-filter:hover {
+  background-color: #2e2e2e;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+/*# sourceMappingURL=studioFilter.css.map */

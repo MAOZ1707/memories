@@ -1,0 +1,189 @@
+.loader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  height: 40px;
+  width: 250px;
+}
+
+.loader.loader--overlay {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loader.loader--center {
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loader span {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin: 0 8px;
+  -webkit-animation: bounce 0.6s infinite alternate;
+          animation: bounce 0.6s infinite alternate;
+  -webkit-transform: translate3d(0);
+          transform: translate3d(0);
+}
+
+.loader span:nth-child(1) {
+  -webkit-animation: bounce1 0.6s infinite alternate;
+          animation: bounce1 0.6s infinite alternate;
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+  background-color: #617fb6;
+}
+
+.loader span:nth-child(2) {
+  -webkit-animation: bounce2 0.6s infinite alternate;
+          animation: bounce2 0.6s infinite alternate;
+  background-color: #574b90;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+.loader span:nth-child(3) {
+  -webkit-animation: bounce3 0.6s infinite alternate;
+          animation: bounce3 0.6s infinite alternate;
+  background-color: #9e579d;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+.loader span:nth-child(4) {
+  -webkit-animation: bounce4 0.6s infinite alternate;
+          animation: bounce4 0.6s infinite alternate;
+  background-color: #fc85ae;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+@-webkit-keyframes bounce {
+  to {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+
+@keyframes bounce {
+  to {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+
+@-webkit-keyframes bounce1 {
+  from {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  to {
+    -webkit-transform: translate3d(0, -20px, 0) scale(1.2);
+            transform: translate3d(0, -20px, 0) scale(1.2);
+  }
+}
+
+@keyframes bounce1 {
+  from {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  to {
+    -webkit-transform: translate3d(0, -20px, 0) scale(1.2);
+            transform: translate3d(0, -20px, 0) scale(1.2);
+  }
+}
+
+@-webkit-keyframes bounce2 {
+  from {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  to {
+    -webkit-transform: translate3d(0, -20px, 0);
+            transform: translate3d(0, -20px, 0);
+  }
+}
+
+@keyframes bounce2 {
+  from {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  to {
+    -webkit-transform: translate3d(0, -20px, 0);
+            transform: translate3d(0, -20px, 0);
+  }
+}
+
+@-webkit-keyframes bounce3 {
+  from {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  to {
+    -webkit-transform: translate3d(0, -20px, 0);
+            transform: translate3d(0, -20px, 0);
+  }
+}
+
+@keyframes bounce3 {
+  from {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  to {
+    -webkit-transform: translate3d(0, -20px, 0);
+            transform: translate3d(0, -20px, 0);
+  }
+}
+
+@-webkit-keyframes bounce4 {
+  from {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  to {
+    -webkit-transform: translate3d(0, -20px, 0);
+            transform: translate3d(0, -20px, 0);
+  }
+}
+
+@keyframes bounce4 {
+  from {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  to {
+    -webkit-transform: translate3d(0, -20px, 0);
+            transform: translate3d(0, -20px, 0);
+  }
+}
+/*# sourceMappingURL=loading.style.css.map */

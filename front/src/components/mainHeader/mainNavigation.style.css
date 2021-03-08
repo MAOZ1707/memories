@@ -1,0 +1,30 @@
+.main-nav-header {
+  display: none;
+}
+
+.main-nav-header-btn {
+  position: absolute;
+  display: block;
+  left: 0;
+}
+
+@media (min-width: 768px) {
+  .main-nav-header-btn {
+    display: none;
+  }
+  .main-nav-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: absolute;
+    right: 10px;
+    width: auto;
+  }
+  .nav-link-wrapper {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+/*# sourceMappingURL=mainNavigation.style.css.map */

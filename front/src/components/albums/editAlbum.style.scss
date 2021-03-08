@@ -1,0 +1,102 @@
+.edit-album-container {
+	background: rgba(0, 0, 0, 0.856);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	justify-content: flex-start;
+	color: rgb(255, 255, 255);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	padding: 20px;
+
+	.update-album-title {
+		font-size: 1.2rem;
+		font-weight: 500;
+		margin-bottom: 15px;
+	}
+
+	.edit-confirm-message {
+		font-weight: 400;
+		line-height: 25px;
+		font-size: 1rem;
+	}
+	.edit-album-buttons {
+		margin-top: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 150px;
+
+		.confirm-edit-btn {
+			background-color: #269ff093;
+			border: none;
+			border-radius: 3px;
+			padding: 5px;
+			outline: none;
+			color: #fff;
+			transition: 0.2s ease-in-out;
+			&:hover {
+				transform: scale(1.1);
+				background-color: #268ef0ec;
+				box-shadow: 0 2px 8px rgba(38, 175, 255, 0.74);
+			}
+		}
+
+		.cancel-edit-btn {
+			background-color: #fdfdfd93;
+			border: none;
+			border-radius: 3px;
+			padding: 5px;
+			outline: none;
+			color: rgb(0, 0, 0);
+			transition: 0.2s ease-in-out;
+			&:hover {
+				transform: scale(1.1);
+				background-color: #ffffffec;
+				box-shadow: 0 2px 8px rgba(247, 247, 247, 0.582);
+			}
+		}
+	}
+}
+
+.update-album-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 100%;
+	width: 90%;
+
+	.update-error-message {
+		width: 100%;
+		color: rgb(255, 255, 255);
+		font-size: 0.8rem;
+		padding: 0 10px;
+		border-radius: 4px;
+		background-color: rgba(252, 16, 16, 0.61);
+	}
+
+	.update-album-label {
+		font-size: 0.8rem;
+	}
+
+	.update-album-form {
+		margin-bottom: 10px;
+		width: 100%;
+		height: 1.5rem;
+		border: 1px solid #fff;
+		border-radius: 4px;
+		background: none;
+		color: #fff;
+		padding-left: 10px;
+	}
+	.textarea {
+		margin-bottom: 0;
+		height: 100px;
+		width: 100%;
+		resize: none;
+	}
+}

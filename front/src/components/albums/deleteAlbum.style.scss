@@ -1,0 +1,56 @@
+.delete-album-container {
+	background: rgba(32, 31, 31, 0.904);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	color: rgb(255, 255, 255);
+	border: 2px solid rgba(252, 41, 41, 0.616);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+
+	.delete-confirm-message {
+		font-weight: 400;
+		line-height: 25px;
+		font-size: 1rem;
+	}
+	.delete-album-buttons {
+		margin-top: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 150px;
+
+		.confirm-delete-btn {
+			background-color: #f0262693;
+			border: none;
+			border-radius: 3px;
+			padding: 5px;
+			outline: none;
+			color: #fff;
+			transition: 0.2s ease-in-out;
+			&:hover {
+				transform: scale(1.1);
+				background-color: #f02626ec;
+				box-shadow: 0 2px 8px rgba(255, 38, 38, 0.74);
+			}
+		}
+		.cancel-delete-btn {
+			background-color: #fdfdfd93;
+			border: none;
+			border-radius: 3px;
+			padding: 5px;
+			outline: none;
+			color: rgb(0, 0, 0);
+			transition: 0.2s ease-in-out;
+			&:hover {
+				transform: scale(1.1);
+				background-color: #ffffffec;
+				box-shadow: 0 2px 8px rgba(247, 247, 247, 0.582);
+			}
+		}
+	}
+}

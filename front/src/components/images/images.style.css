@@ -1,0 +1,95 @@
+.images-list-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  gap: 10px;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.image-wrapper {
+  background: #fff;
+  width: 100%;
+  height: 400px;
+  justify-self: center;
+  overflow: hidden;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: rgba(124, 124, 124, 0.658);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.image-wrapper .image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.image-wrapper .image-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: auto;
+  background-color: white;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid rgba(105, 105, 105, 0.589);
+  border-top: none;
+  border-right: none;
+  border-radius: 0px 0px 0px 4px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  right: 0;
+  gap: 10px;
+  -webkit-transform: translateY(-100px);
+          transform: translateY(-100px);
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+}
+
+.image-wrapper .image-action button {
+  width: 40px;
+  height: 30px;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.image-wrapper .image-action button img {
+  width: 20px;
+}
+
+.image-wrapper:hover .image-action {
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+}
+/*# sourceMappingURL=images.style.css.map */
