@@ -27,7 +27,7 @@ const ImagesList = () => {
 	return (
 		<div className="images-list-container">
 			<ErrorModal error={error.error} onClear={clearError} />
-			<UploadImage albumId={albumId} />
+			{/* <UploadImage albumId={albumId} /> */}
 			{imageState.images.length === 0 ? (
 				<div>
 					No images, please upload.
