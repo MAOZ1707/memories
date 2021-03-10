@@ -28,7 +28,10 @@ exports.getImagesByAlbumId = async (req, res, next) => {
 	}
 
 	if (!albumImages || albumImages.length === 0) {
-		return new AppError('Could not find images for the this album', 404);
+		res.status(200).json({
+			images: [],
+		});
+		return;
 	}
 
 	res.status(200).json({
@@ -203,8 +206,6 @@ exports.likeImage = async (req, res, next) => {
 exports.uploadImages = async (req, res, next) => {
 	const albumId = req.params.id;
 
-	console.log(req.files);
-
 	let images;
 	try {
 		images = await req.files;
@@ -230,7 +231,6 @@ exports.uploadImages = async (req, res, next) => {
 			});
 
 			res.status(200).json({ image: newImage });
-			return next();
 		});
 	} catch (error) {
 		return next(

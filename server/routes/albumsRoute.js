@@ -6,7 +6,7 @@ const checkAuth = require('../middleware/checkAuth');
 
 const albumsController = require('../controller/albumsController');
 
-const parser = require('../middleware/cloudinary');
+const uploadS3 = require('../middleware/multer');
 
 const router = express.Router();
 
@@ -22,7 +22,7 @@ router
 	.post(
 		body('title').notEmpty().isString(),
 		body('address').notEmpty().isString(),
-		parser.single('image'),
+		uploadS3.single('image'),
 		albumsController.createAlbums
 	);
 

@@ -40,6 +40,9 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.header .app-title a {
   font-size: 2rem;
   font-family: 'Pristina';
 }

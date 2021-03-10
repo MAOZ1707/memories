@@ -30,13 +30,6 @@ const NavLInks = () => {
 			)}
 			{auth.isLogin && (
 				<li>
-					<NavLink to={`/album/${album._id}/images/upload`}>
-						Upload images
-					</NavLink>
-				</li>
-			)}
-			{auth.isLogin && (
-				<li>
 					<NavLink to={`/user/create-album`}>Create Album</NavLink>
 				</li>
 			)}

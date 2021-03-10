@@ -4,7 +4,7 @@ const cors = require('cors');
 const chalk = require('chalk');
 const app = require('./app');
 
-dotenv.config({ path: './configEnv.env' });
+dotenv.config({ path: './config.env' });
 
 app.use(cors());
 app.use(cors({ origin: true, credentials: true }));

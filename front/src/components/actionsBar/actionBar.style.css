@@ -1,0 +1,66 @@
+.action-bar-wrapper {
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  position: relative;
+  z-index: 20;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 10px;
+  gap: 15px;
+  grid-column: 1/-1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+
+.action-bar-wrapper::after {
+  content: '';
+  width: 200px;
+  background: black;
+  height: 1px;
+  bottom: 10px;
+  position: absolute;
+}
+
+.action-bar-wrapper img {
+  width: 30px;
+  height: 30px;
+  padding: 1px;
+}
+
+.action-bar-wrapper button {
+  background: none;
+  border: none;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  -webkit-transition: 0.4s linear;
+  transition: 0.4s linear;
+}
+
+.action-bar-wrapper button a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.action-bar-wrapper button:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.4s linear;
+  transition: 0.4s linear;
+}
+/*# sourceMappingURL=actionBar.style.css.map */

@@ -1,7 +1,6 @@
 const { validationResult } = require('express-validator');
 const Albums = require('../model/albumsSchema');
 const User = require('../model/usersSchema');
-// const Images = require('../model/imagesSchema');
 const AppError = require('../utils/appError');
 const getCoordsForAddress = require('../utils/location');
 
@@ -96,7 +95,7 @@ exports.createAlbums = async (req, res, next) => {
 
 	let imageFile;
 	try {
-		imageFile = req.file.path;
+		imageFile = req.file.location;
 	} catch (error) {
 		return next(
 			new AppError('Something went wrong, please try again later.', 500)

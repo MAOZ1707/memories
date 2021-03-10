@@ -9,6 +9,55 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
+.no-image-container {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  padding-top: 10px;
+  height: 20vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.no-image-container p {
+  color: #494949;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.no-image-container .no-image-btn {
+  width: 150px;
+  font-size: 0.8rem;
+  padding: 5px;
+  border: none;
+  background-color: #3b3b3b;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+}
+
+.no-image-container .no-image-btn a {
+  color: #fff;
+}
+
+.no-image-container .no-image-btn:hover {
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.37);
+          box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.37);
+}
+
 .image-wrapper {
   background: #fff;
   width: 100%;

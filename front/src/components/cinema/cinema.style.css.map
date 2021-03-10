@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,sBAAsB,CAAC,oBAAoB,CAAC,oBAAoB,CAAC;EAChE,UAAU,EAAE,kBAAkB;CAC9B;;AACD,AAAA,sBAAsB,AAAA,KAAK,CAAC,oBAAoB,CAAC,oBAAoB;AACrE,sBAAsB,AAAA,MAAM,CAAC,oBAAoB,CAAC,oBAAoB,CAAC;EACtE,UAAU,EAAE,KAAK;CACjB",
+    "sources": [
+        "cinema.style.scss"
+    ],
+    "names": [],
+    "file": "cinema.style.css"
+}

@@ -40,8 +40,8 @@ const CreateAlbum = () => {
 					address: Yup.string().required('Required'),
 					image: Yup.string().required('Required'),
 				})}
-				onSubmit={async (values, { setSubmitting }) => {
-					await dispatch(createAlbum(values));
+				onSubmit={(values, { setSubmitting }) => {
+					dispatch(createAlbum(values));
 					setSubmitting(false);
 					history.push('/');
 				}}

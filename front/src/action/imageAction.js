@@ -49,7 +49,7 @@ export const likeImage = (imageId) => {
 export const getImagesByAlbumId = (albumId) => {
 	return async (dispatch, getState) => {
 		const { auth } = getState();
-
+		console.log(albumId);
 		dispatch(loading('IMAGES_LOADING', true));
 		try {
 			const response = await axios({
@@ -61,6 +61,7 @@ export const getImagesByAlbumId = (albumId) => {
 				},
 			});
 			const { images } = await response.data;
+			console.log(images);
 			dispatch(loading('IMAGES_LOADING', false));
 			dispatch(sendActions('GET_ALL_IMAGES', images));
 		} catch (error) {

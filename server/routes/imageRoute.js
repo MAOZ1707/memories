@@ -9,8 +9,6 @@ const uploadS3 = require('../middleware/multer');
 
 const checkAuth = require('../middleware/checkAuth');
 
-// const parser = require('../middleware/cloudinary');
-
 const router = express.Router();
 
 router.use(checkAuth);

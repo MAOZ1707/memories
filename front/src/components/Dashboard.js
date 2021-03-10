@@ -9,9 +9,8 @@ import UserAlbums from './albums/UserAlbums';
 import './dashboard.style.css';
 import ImagesList from './images/ImagesList';
 import UploadImage from './images/UpLoadImage';
+import Cinema from './cinema/Cinema';
 import Studio from './studio/Studio';
-// const UserAlbums = lazy(() => import('./albums/UserAlbums'));
-// const ImagesList = lazy(() => import('./images/ImagesList'));
 
 const Dashboard = () => {
 	return (
@@ -27,6 +26,9 @@ const Dashboard = () => {
 						</Route>
 						<Route exact path="/album/:albumId/images/upload">
 							<UploadImage />
+						</Route>
+						<Route exact path="/album/:albumId/images/cinema">
+							<Cinema />
 						</Route>
 						<Route path="/image/:imageId/studio">
 							<Studio />

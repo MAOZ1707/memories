@@ -139,6 +139,8 @@ export const updateAlbumById = (albumId, update) => {
 export const createAlbum = (newAlbum) => {
 	return async (dispatch, getState) => {
 		const { auth } = getState();
+
+		console.log(auth.userIdw);
 		dispatch(loading('ALBUMS_LOADING', true));
 		try {
 			let formData = new FormData();

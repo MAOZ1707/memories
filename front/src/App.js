@@ -16,6 +16,7 @@ import UserAlbums from './components/albums/UserAlbums';
 import ImagesList from './components/images/ImagesList';
 import UpLoadImage from './components/images/UpLoadImage';
 import Studio from './components/studio/Studio';
+import Cinema from './components/cinema/Cinema';
 
 function App() {
 	const auth = useSelector((state) => state.auth);
@@ -40,6 +41,9 @@ function App() {
 				</Route>
 				<Route exact path="/album/:albumId/images/upload">
 					<UpLoadImage />
+				</Route>
+				<Route exact path="/album/:albumId/images/cinema">
+					<Cinema />
 				</Route>
 				<Route path="/image/:imageId/studio">
 					<Studio />
