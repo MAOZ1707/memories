@@ -1,4 +1,5 @@
 const { validationResult } = require('express-validator');
+const moment = require('moment'); // require
 const Albums = require('../model/albumsSchema');
 const User = require('../model/usersSchema');
 const AppError = require('../utils/appError');
@@ -113,7 +114,7 @@ exports.createAlbums = async (req, res, next) => {
 			address: req.body.address,
 			location: coordinates,
 			image: imageFile,
-			createAt: new Date(),
+			createAt: moment().format('L'),
 			creator: req.body.creator,
 		});
 

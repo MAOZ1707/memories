@@ -148,7 +148,7 @@ export const createAlbum = (newAlbum) => {
 			formData.append('description', newAlbum.description);
 			formData.append('address', newAlbum.address);
 			formData.append('image', newAlbum.image);
-			formData.append('createAt', new Date());
+			// formData.append('createAt', new Date());
 			formData.append('creator', auth.userId);
 
 			const response = await axios({

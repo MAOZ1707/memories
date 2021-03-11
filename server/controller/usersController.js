@@ -32,8 +32,10 @@ exports.getUserById = async (req, res, next) => {
 	}
 
 	res.json({
-		status: 'success',
-		user,
+		userName: {
+			firstName: user.firstname,
+			lastName: user.lastname,
+		},
 	});
 };
 

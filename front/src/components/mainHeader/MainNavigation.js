@@ -7,6 +7,7 @@ import MainHeader from './MainHeader';
 import SearchBox from '../searchBox/SearchBox';
 
 import './mainNavigation.style.css';
+import AppLogo from './AppLogo';
 
 const MainNavigation = () => {
 	const [sideBarOpen, setSideBarOpen] = useState(false);
@@ -28,9 +29,7 @@ const MainNavigation = () => {
 				<>
 					<SearchBox SearchMode={false} />
 				</>
-				<button className="main-nav-header-btn" onClick={openSideBar}>
-					logo
-				</button>
+				<AppLogo handleClick={openSideBar} />
 				<nav className="main-nav-header">
 					<NavLInks />
 				</nav>

@@ -3,6 +3,8 @@ const initialState = {
 	token: null,
 	userId: null,
 	isLoading: false,
+	firstName: '',
+	lastName: '',
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -30,6 +32,13 @@ export const authReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoading: action.isLoading,
+			};
+		case 'USER_FULL_NAME':
+			const { userName } = action.payload;
+			return {
+				...state,
+				firstName: userName.firstName,
+				lastName: userName.lastName,
 			};
 		default:
 			return state;

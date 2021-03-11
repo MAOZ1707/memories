@@ -1,0 +1,47 @@
+.app-logo-style {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	display: block;
+	margin-left: 10px;
+	left: 0;
+	border: none;
+
+	.balls-wrapper {
+		width: 100%;
+		background-color: #fff;
+		height: 100%;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.6s ease-in-out;
+
+		&:hover div {
+			transition: all 0.6s ease-in-out;
+			transform: translate(0);
+			cursor: pointer;
+			border-radius: 0;
+			width: 20px;
+			height: 20px;
+		}
+
+		div {
+			transition: all 0.6s ease-in-out;
+			width: 7px;
+			height: 7px;
+			background: black;
+			border-radius: 50%;
+			position: absolute;
+		}
+	}
+	.ball-1 {
+		transform: translate(0, -10px);
+	}
+	.ball-2 {
+		transform: translate(-15px, 14px);
+	}
+	.ball-3 {
+		transform: translate(15px, 14px);
+	}
+}

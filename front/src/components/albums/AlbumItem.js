@@ -36,12 +36,15 @@ const AlbumItem = ({ info }) => {
 	const clearError = () => {
 		dispatch({ type: 'CLEAR_ERROR' });
 	};
+
+	console.log(info);
+
 	return (
 		<Card className="album-card-container">
 			<ErrorModal error={error.error} onClear={clearError} />
 			{albumsState.isLoading && <LoadingSpinner />}
 			<div className="control-panel">
-				<p className="creation-date">Date</p>
+				<p className="creation-date">{info.createAt}</p>
 				<div className="control-panel-btn">
 					<button
 						className="delete-btn-icon"

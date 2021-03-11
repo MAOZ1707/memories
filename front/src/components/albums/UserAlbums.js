@@ -12,6 +12,8 @@ const UserAlbums = () => {
 	const error = useSelector((state) => state.error);
 	const dispatch = useDispatch();
 
+	console.log(albumsState);
+
 	useLayoutEffect(() => {
 		dispatch(getUserAlbums(auth.userId));
 	}, [auth.token, auth.userId, dispatch]);

@@ -4,14 +4,14 @@ import { NavLink, useHistory } from 'react-router-dom';
 
 import { logOut } from '../../action/userAction';
 import ReactToolTip from 'react-tooltip';
+import UserLoginIcon from './UserLoginIcon';
 
 import './navLinks.style.css';
 
 const NavLInks = () => {
 	const auth = useSelector((state) => state.auth);
-	const album = useSelector((state) => state.albums.album);
 
-	console.log(album);
+	console.log(auth);
 
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -23,6 +23,7 @@ const NavLInks = () => {
 
 	return (
 		<ul className="nav-link-wrapper">
+			<UserLoginIcon />
 			{auth.isLogin && (
 				<li>
 					<NavLink to="/albums">Albums</NavLink>

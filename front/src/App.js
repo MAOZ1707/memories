@@ -9,8 +9,8 @@ import {
 	Switch,
 } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { authCheck } from './action/userAction';
-import { useEffect } from 'react';
+import { authCheck, getUserFullName } from './action/userAction';
+import { useCallback, useEffect } from 'react';
 import CreateAlbum from './components/albums/CreateAlbum';
 import UserAlbums from './components/albums/UserAlbums';
 import ImagesList from './components/images/ImagesList';
@@ -22,8 +22,13 @@ function App() {
 	const auth = useSelector((state) => state.auth);
 	const dispatch = useDispatch();
 
+	const initGetName = useCallback(() => {
+		dispatch(getUserFullName());
+	}, [dispatch]);
+
 	useEffect(() => {
 		dispatch(authCheck());
+		initGetName();
 	}, []);
 
 	let routes;

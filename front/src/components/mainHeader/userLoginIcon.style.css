@@ -1,0 +1,21 @@
+.user-login-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  top: 120px;
+  font-size: 1.8rem;
+  font-family: 'Pristina';
+  font-weight: 600;
+  border: 1px solid #000;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+/*# sourceMappingURL=userLoginIcon.style.css.map */

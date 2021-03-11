@@ -97,3 +97,24 @@ export const logOut = () => {
 	localStorage.removeItem('userData');
 	return { type: 'LOG_OUT' };
 };
+
+export const getUserFullName = () => {
+	return async (dispatch, getState) => {
+		const { auth } = getState();
+		try {
+			const response = await axios({
+				url: `/api/users/${auth.userId}`,
+				method: 'get',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: 'Bearer ' + auth.token,
+				},
+			});
+			const responseData = await response.data;
+			console.log(responseData);
+			dispatch({ type: 'USER_FULL_NAME', payload: responseData });
+		} catch (error) {
+			console.log(error.response.data.message);
+		}
+	};
+};
