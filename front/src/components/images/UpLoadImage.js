@@ -84,7 +84,6 @@ const UpLoadImage = () => {
 		dispatch(uploadImages(albumId, formD));
 	};
 	if (status === 200) {
-		console.log('done');
 		history.push(`/album/${albumId}/images`);
 	}
 
@@ -93,6 +92,7 @@ const UpLoadImage = () => {
 	};
 
 	useEffect(() => {
+		dispatch({ type: 'UPLOAD_STATUS', payload: 0 });
 		setLoading(imageState.isLoading);
 		setStatus(imageState.uploadStatus);
 	}, [imageState.isLoading, imageState.uploadStatus]);
