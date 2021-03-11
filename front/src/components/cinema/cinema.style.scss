@@ -1,7 +1,16 @@
 .image-gallery-content .image-gallery-slide .image-gallery-image {
 	max-height: calc(100vh - 80px);
+	height: 400px;
 }
 .image-gallery-content.left .image-gallery-slide .image-gallery-image,
 .image-gallery-content.right .image-gallery-slide .image-gallery-image {
 	max-height: 100vh;
+}
+
+.image-gallery-thumbnail .image-gallery-thumbnail-image {
+	vertical-align: middle;
+	width: 100%;
+	height: 80px;
+	object-fit: cover;
+	line-height: 0;
 }

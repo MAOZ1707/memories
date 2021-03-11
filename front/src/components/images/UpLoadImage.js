@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 import { uploadImages } from '../../action/imageAction';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import LoadingSpinner from '../UIElement/LoadingSpinner';
 
 import './uploadImage.style.css';
 
@@ -43,11 +44,16 @@ const img = {
 	display: 'block',
 	width: '100%',
 	objectFit: 'cover',
-	// height: '100%',
 };
 
 const UpLoadImage = () => {
 	const [previewImages, setPreviewImages] = useState([]);
+	const imageState = useSelector((state) => state.images);
+	const history = useHistory();
+	const [loading, setLoading] = useState(false);
+	const [status, setStatus] = useState(null);
+
+	console.log(status);
 
 	const {
 		acceptedFiles,
@@ -71,13 +77,25 @@ const UpLoadImage = () => {
 	const dispatch = useDispatch();
 
 	const { albumId } = useParams();
-	console.log(albumId);
 
 	const sendFiles = () => {
 		const formD = new FormData();
 		acceptedFiles.forEach((file) => formD.append(`image`, file));
 		dispatch(uploadImages(albumId, formD));
 	};
+	if (status === 200) {
+		console.log('done');
+		history.push(`/album/${albumId}/images`);
+	}
+
+	const testBtn = () => {
+		history.push(`/album/${albumId}/images`);
+	};
+
+	useEffect(() => {
+		setLoading(imageState.isLoading);
+		setStatus(imageState.uploadStatus);
+	}, [imageState.isLoading, imageState.uploadStatus]);
 
 	useEffect(
 		() => () => {
@@ -134,6 +152,7 @@ const UpLoadImage = () => {
 
 	return (
 		<section className="container">
+			{loading && <LoadingSpinner overlay />}
 			<div {...getRootProps({ style })}>
 				<input {...getInputProps()} />
 				<p className="drop-zone">
@@ -143,6 +162,7 @@ const UpLoadImage = () => {
 			<h4>Preview</h4>
 			<aside style={thumbsContainer}>{thumbs}</aside>
 			<button onClick={sendFiles}>dispatch</button>
+			<button onClick={testBtn}>Go Back</button>
 		</section>
 	);
 };

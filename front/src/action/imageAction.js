@@ -100,8 +100,8 @@ export const deleteImageById = (imageId) => {
 export const uploadImages = (albumId, images) => {
 	return async (dispatch, getState) => {
 		const { auth } = getState();
-		console.log(images);
 		dispatch(loading('IMAGES_LOADING', true));
+		dispatch({ type: 'UPLOAD_STATUS', payload: 100 });
 		try {
 			const response = await axios({
 				url: `/api/images/album/${albumId}/upload`,
@@ -112,10 +112,14 @@ export const uploadImages = (albumId, images) => {
 					Authorization: 'Bearer ' + auth.token,
 				},
 			});
+			console.log(response.status);
+			if (response.status === 200) {
+				dispatch({ type: 'UPLOAD_STATUS', payload: response.status });
+				dispatch(loading('IMAGES_LOADING', false));
+			}
+
 			const { data } = await response;
 			dispatch(sendActions('UPLOAD_IMAGES', data));
-			// dispatch(getImagesByAlbumId(albumId));
-			dispatch(loading('IMAGES_LOADING', false));
 		} catch (error) {
 			dispatch(loading('IMAGES_LOADING', false));
 			const err = error.response.data.message;

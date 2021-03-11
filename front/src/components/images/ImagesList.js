@@ -18,10 +18,12 @@ const ImagesList = () => {
 	const error = useSelector((state) => state.error);
 	const { albumId } = useParams();
 
+	console.log(imageState);
+
 	useEffect(() => {
 		dispatch(getImagesByAlbumId(albumId));
 		dispatch(getAlbumById(albumId));
-	}, [albumId]);
+	}, [albumId, dispatch]);
 
 	const clearError = () => {
 		dispatch({ type: 'CLEAR_ERROR' });

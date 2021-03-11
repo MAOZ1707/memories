@@ -2,6 +2,7 @@ const initialState = {
 	image: {},
 	images: [],
 	isLoading: false,
+	uploadStatus: 0,
 };
 
 export const imagesReducer = (state = initialState, action) => {
@@ -37,6 +38,11 @@ export const imagesReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoading: action.payload,
+			};
+		case 'UPLOAD_STATUS':
+			return {
+				...state,
+				uploadStatus: action.payload,
 			};
 		case 'ADD_IMAGE_FILTER':
 			return {

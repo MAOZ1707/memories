@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable no-restricted-syntax */
 const { validationResult } = require('express-validator');
 const Albums = require('../model/albumsSchema');
@@ -219,19 +220,35 @@ exports.uploadImages = async (req, res, next) => {
 		return next(new AppError('please upload at least one image'));
 	}
 	if (!images || images.length > 4) {
-		return next(new AppError('Maximum images to upload is 4'));
+		return next(new AppError('You can upload maximum 4 images each time'));
 	}
 
 	try {
-		images.forEach(async (img) => {
-			const newImage = await Images.create({
+		// images.forEach(async (img) => {
+		// 	const newImage = await Images.create({
+		// 		imageUrl: img.location,
+		// 		albumId: albumId,
+		// 		like: false,
+		// 	});
+		// 	res.status(200).json({ image: newImage });
+		// });
+
+		//============
+		let result = images.map((img) => {
+			let finalImage = {
 				imageUrl: img.location,
 				albumId: albumId,
 				like: false,
-			});
+			};
 
-			res.status(200).json({ image: newImage });
+			let newUpload = new Images(finalImage);
+
+			return newUpload
+				.save()
+				.then(() => ({ msg: 'upload successfully' }))
+				.catch((error) => console.log(error));
 		});
+		Promise.all(result).then((msg) => res.json({ msg }));
 	} catch (error) {
 		return next(
 			new AppError('Could not upload images, please try again later')
@@ -242,7 +259,6 @@ exports.uploadImages = async (req, res, next) => {
 exports.addImageStyle = async (req, res, next) => {
 	const imageId = req.params.id;
 
-	console.log(req.body);
 	try {
 		const addFilters = await Images.findByIdAndUpdate(
 			imageId,
