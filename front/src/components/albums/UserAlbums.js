@@ -1,7 +1,6 @@
 import React, { useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAlbums } from '../../action/albumAction';
-import ErrorModal from '../UIElement/ErrorModal';
 import LoadingSpinner from '../UIElement/LoadingSpinner';
 import AlbumItem from './AlbumItem';
 import FilterBar from '../filterBar/FilterBar';
@@ -16,10 +15,6 @@ const UserAlbums = () => {
 	useLayoutEffect(() => {
 		dispatch(getUserAlbums(auth.userId));
 	}, [auth.userId]);
-
-	const clearError = () => {
-		dispatch({ type: 'CLEAR_ERROR' });
-	};
 
 	if (
 		!albumsState.isLoading &&
@@ -38,7 +33,6 @@ const UserAlbums = () => {
 		<React.Fragment>
 			<FilterBar />
 			<div className="album-container-layout">
-				<ErrorModal error={error.error} onClear={clearError} />
 				{albumsState.isLoading && (
 					<div className="loading-indicator">
 						<LoadingSpinner overlay />
