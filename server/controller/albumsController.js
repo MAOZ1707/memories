@@ -131,7 +131,7 @@ exports.createAlbums = async (req, res, next) => {
 			address: req.body.address,
 			location: coordinates,
 			image: imageFile,
-			createAt: moment().format('L'),
+			createAt: moment().locale('en-au').format('L'),
 			creator: req.body.creator,
 		});
 

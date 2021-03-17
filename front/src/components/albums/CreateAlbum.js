@@ -9,11 +9,13 @@ import './createAlbum.style.css';
 import Thumb from './Thumb';
 import { createAlbum } from '../../action/albumAction';
 import LoadingSpinner from '../UIElement/LoadingSpinner';
+import ErrorModal from '../UIElement/ErrorModal';
 
 const CreateAlbum = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const albumsState = useSelector((state) => state.albums);
+	const error = useSelector((state) => state.error);
 
 	console.log(albumsState);
 
@@ -26,8 +28,12 @@ const CreateAlbum = () => {
 		image: null,
 	};
 
+	const clearError = () => {
+		dispatch({ type: 'CLEAR_ERROR' });
+	};
 	return (
 		<div className="auth-container">
+			<ErrorModal error={error.error} onClear={clearError} />
 			<Formik
 				initialValues={init}
 				validationSchema={Yup.object({

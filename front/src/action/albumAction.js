@@ -14,6 +14,12 @@ const loading = (type, data) => {
 	};
 };
 
+const errorHandler = (type, err) => {
+	return {
+		type,
+		error: err,
+	};
+};
 export const getUserAlbums = (userId, key, search = '') => {
 	return async (dispatch, getState) => {
 		const { auth } = getState();
@@ -32,8 +38,9 @@ export const getUserAlbums = (userId, key, search = '') => {
 			dispatch(loading('ALBUMS_LOADING', false));
 		} catch (error) {
 			dispatch(loading('ALBUMS_LOADING', false));
-			// todo Error handle
-			console.log(error.response.data.message);
+			const err = error.response.data.message;
+			console.log(err);
+			dispatch(errorHandler('ERROR', err));
 		}
 	};
 };
@@ -54,7 +61,8 @@ export const getAlbumById = (albumId) => {
 			dispatch(fetchSuccess('GET_ALBUM', data));
 			dispatch(loading('ALBUMS_LOADING', false));
 		} catch (error) {
-			console.log(error.response.data.message);
+			const err = error.response.data.message;
+			dispatch(errorHandler('ERROR', err));
 			dispatch(loading('ALBUMS_LOADING', false));
 		}
 	};
@@ -78,7 +86,8 @@ export const deleteUserAlbum = (albumId) => {
 			dispatch({ type: 'DELETE_ALBUM', albumId });
 			dispatch(loading('ALBUMS_LOADING', false));
 		} catch (error) {
-			console.log(error.response.data.message);
+			const err = error.response.data.message;
+			dispatch(errorHandler('ERROR', err));
 			dispatch(loading('ALBUMS_LOADING', false));
 		}
 	};
@@ -102,7 +111,8 @@ export const likeAlbum = (albumId) => {
 			dispatch({ type: 'LIKE_ALBUM', payload: album });
 			dispatch(loading('ALBUMS_LOADING', false));
 		} catch (error) {
-			console.log(error.response.data.message);
+			const err = error.response.data.message;
+			dispatch(errorHandler('ERROR', err));
 			dispatch(loading('ALBUMS_LOADING', false));
 		}
 	};
@@ -131,7 +141,8 @@ export const updateAlbumById = (albumId, update) => {
 			dispatch({ type: 'UPDATE_ALBUM', payload: data });
 			dispatch(loading('ALBUMS_LOADING', false));
 		} catch (error) {
-			console.log(error.response.data.message);
+			const err = error.response.data.message;
+			dispatch(errorHandler('ERROR', err));
 			dispatch(loading('ALBUMS_LOADING', false));
 		}
 	};
@@ -141,7 +152,6 @@ export const createAlbum = (newAlbum) => {
 	return async (dispatch, getState) => {
 		const { auth } = getState();
 
-		console.log(auth.userIdw);
 		dispatch(loading('ALBUMS_LOADING', true));
 		try {
 			let formData = new FormData();
@@ -149,7 +159,6 @@ export const createAlbum = (newAlbum) => {
 			formData.append('description', newAlbum.description);
 			formData.append('address', newAlbum.address);
 			formData.append('image', newAlbum.image);
-			// formData.append('createAt', new Date());
 			formData.append('creator', auth.userId);
 
 			const response = await axios({
@@ -162,11 +171,11 @@ export const createAlbum = (newAlbum) => {
 				data: formData,
 			});
 			const { album } = await response.data;
-			console.log(album);
-			dispatch(fetchSuccess('CREATE_ALBUM', album));
 			dispatch(loading('ALBUMS_LOADING', false));
+			dispatch(fetchSuccess('CREATE_ALBUM', album));
 		} catch (error) {
-			console.log(error.response);
+			const err = error.response.data.message;
+			dispatch(errorHandler('ERROR', err));
 			dispatch(loading('ALBUMS_LOADING', false));
 		}
 	};

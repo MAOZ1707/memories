@@ -12,12 +12,20 @@
       -ms-flex-align: center;
           align-items: center;
   top: 7vh;
+  padding: 10px;
   left: 10%;
   width: 80%;
   background: white;
   -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 3px;
+}
+
+.modal .modal__content {
+  margin-bottom: 20px;
+  line-height: 50px;
+  font-weight: 500;
+  font-size: 1.2rem;
 }
 
 .modal-enter {

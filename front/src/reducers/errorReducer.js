@@ -6,6 +6,7 @@ const initialState = {
 export const errorReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case 'ERROR':
+			console.log(action);
 			return {
 				...state,
 				error: action.error,

@@ -6,6 +6,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import LoadingSpinner from '../UIElement/LoadingSpinner';
 
 import './uploadImage.style.css';
+import ErrorModal from '../UIElement/ErrorModal';
 
 const thumbsContainer = {
 	display: 'flex',
@@ -52,6 +53,7 @@ const UpLoadImage = () => {
 	const history = useHistory();
 	const [loading, setLoading] = useState(false);
 	const [status, setStatus] = useState(null);
+	const error = useSelector((state) => state.error);
 
 	console.log(status);
 
@@ -150,8 +152,13 @@ const UpLoadImage = () => {
 		[isDragActive, isDragReject, isDragAccept]
 	);
 
+	const clearError = () => {
+		dispatch({ type: 'CLEAR_ERROR' });
+	};
+
 	return (
 		<section className="container">
+			<ErrorModal error={error.error} onClear={clearError} />
 			{loading && <LoadingSpinner overlay />}
 			<div {...getRootProps({ style })}>
 				<input {...getInputProps()} />

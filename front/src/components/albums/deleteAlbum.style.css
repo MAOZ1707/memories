@@ -33,6 +33,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  gap: 10px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -40,43 +41,5 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 150px;
-}
-
-.delete-album-container .delete-album-buttons .confirm-delete-btn {
-  background-color: #f0262693;
-  border: none;
-  border-radius: 3px;
-  padding: 5px;
-  outline: none;
-  color: #fff;
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
-}
-
-.delete-album-container .delete-album-buttons .confirm-delete-btn:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-  background-color: #f02626ec;
-  -webkit-box-shadow: 0 2px 8px rgba(255, 38, 38, 0.74);
-          box-shadow: 0 2px 8px rgba(255, 38, 38, 0.74);
-}
-
-.delete-album-container .delete-album-buttons .cancel-delete-btn {
-  background-color: #fdfdfd93;
-  border: none;
-  border-radius: 3px;
-  padding: 5px;
-  outline: none;
-  color: black;
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
-}
-
-.delete-album-container .delete-album-buttons .cancel-delete-btn:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-  background-color: #ffffffec;
-  -webkit-box-shadow: 0 2px 8px rgba(247, 247, 247, 0.582);
-          box-shadow: 0 2px 8px rgba(247, 247, 247, 0.582);
 }
 /*# sourceMappingURL=deleteAlbum.style.css.map */

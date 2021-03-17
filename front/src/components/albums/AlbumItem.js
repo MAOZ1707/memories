@@ -6,9 +6,11 @@ import Card from '../UIElement/Card';
 import ErrorModal from '../UIElement/ErrorModal';
 import LoadingSpinner from '../UIElement/LoadingSpinner';
 import Map from '../UIElement/Map';
-import './albumItem.style.css';
+import Button from '../UIElement/Button';
 import DeleteAlbum from './DeleteAlbum';
 import EditAlbum from './EditAlbum';
+
+import './albumItem.style.css';
 
 const AlbumItem = ({ info }) => {
 	const [locationIsOpen, setLocationIsOpen] = useState(false);
@@ -81,9 +83,9 @@ const AlbumItem = ({ info }) => {
 
 					<div className="card-info-text">
 						<p className="card-album-description">{info.description}</p>
-						<button className="link image-btn" type="button">
+						<Button images type="button">
 							<Link to={`/album/${info._id}/images`}>Images</Link>
-						</button>
+						</Button>
 					</div>
 				</div>
 

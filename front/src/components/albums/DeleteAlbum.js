@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteUserAlbum } from '../../action/albumAction';
 import ErrorModal from '../UIElement/ErrorModal';
+import Button from '../UIElement/Button';
 
 import './deleteAlbum.style.css';
 
@@ -27,12 +28,12 @@ const DeleteAlbum = ({ albumId, handleCancelDelete }) => {
 				Do you sure you want to delete this album?
 			</h3>
 			<div className="delete-album-buttons">
-				<button className="confirm-delete-btn" onClick={confirmDelete}>
+				<Button danger onClick={confirmDelete}>
 					Confirm
-				</button>
-				<button className="cancel-delete-btn" onClick={handleCancel}>
+				</Button>
+				<Button cancel type="button" onClick={handleCancel}>
 					Cancel
-				</button>
+				</Button>
 			</div>
 		</div>
 	);

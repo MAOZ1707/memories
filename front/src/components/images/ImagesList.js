@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getAlbumById } from '../../action/albumAction';
 import { getImagesByAlbumId } from '../../action/imageAction.js';
-import ErrorModal from '../UIElement/ErrorModal';
 import ImageItem from './ImageItem';
 import ActionBar from '../actionsBar/ActionBar';
+import ErrorModal from '../UIElement/ErrorModal';
+import Button from '../UIElement/Button';
 
 import './images.style.css';
 
@@ -36,9 +37,9 @@ const ImagesList = () => {
 			{imageState.images.length === 0 ? (
 				<div className="no-image-container">
 					<p>No images, please upload.</p>
-					<button className="no-image-btn">
+					<Button submit>
 						<Link to={`/album/${albumId}/images/upload`}>Upload</Link>
-					</button>
+					</Button>
 				</div>
 			) : (
 				<React.Fragment>

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Button from '../UIElement/Button';
 import Modal from './Modal';
 
 const ErrorModal = (props) => {
@@ -8,7 +9,11 @@ const ErrorModal = (props) => {
 			onCancel={props.onClear}
 			header="An Error Occurred!"
 			show={!!props.error}
-			footer={<button onClick={props.onClear}>Close</button>}
+			footer={
+				<Button submit onClick={props.onClear}>
+					Close
+				</Button>
+			}
 		>
 			<p>{props.error}</p>
 		</Modal>

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAlbums } from '../../action/albumAction';
+import ErrorModal from '../UIElement/ErrorModal';
 import './search.style.css';
 
 const SearchBox = ({ open }) => {
@@ -8,6 +9,8 @@ const SearchBox = ({ open }) => {
 	const { userId } = useSelector((state) => state.auth);
 	const [input, setInput] = useState('');
 	const [active, setActive] = useState(false);
+	const error = useSelector((state) => state.error);
+	console.log(error);
 
 	let inputRef = useRef();
 
@@ -26,8 +29,13 @@ const SearchBox = ({ open }) => {
 		return () => clearTimeout(debounce);
 	}, [dispatch, input, userId]);
 
+	const clearError = () => {
+		dispatch({ type: 'CLEAR_ERROR' });
+	};
+
 	return (
 		<div className="search-box">
+			<ErrorModal error={error.error} onClear={clearError} />
 			<button
 				className="search-btn"
 				aria-label="submit search"

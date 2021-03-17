@@ -17,7 +17,7 @@ const loading = (type, data) => {
 const errorHandler = (type, err) => {
 	return {
 		type,
-		payload: err,
+		error: err,
 	};
 };
 

@@ -20,37 +20,9 @@
 	.delete-album-buttons {
 		margin-top: 40px;
 		display: flex;
+		gap: 10px;
 		align-items: center;
 		justify-content: space-between;
 		width: 150px;
-
-		.confirm-delete-btn {
-			background-color: #f0262693;
-			border: none;
-			border-radius: 3px;
-			padding: 5px;
-			outline: none;
-			color: #fff;
-			transition: 0.2s ease-in-out;
-			&:hover {
-				transform: scale(1.1);
-				background-color: #f02626ec;
-				box-shadow: 0 2px 8px rgba(255, 38, 38, 0.74);
-			}
-		}
-		.cancel-delete-btn {
-			background-color: #fdfdfd93;
-			border: none;
-			border-radius: 3px;
-			padding: 5px;
-			outline: none;
-			color: rgb(0, 0, 0);
-			transition: 0.2s ease-in-out;
-			&:hover {
-				transform: scale(1.1);
-				background-color: #ffffffec;
-				box-shadow: 0 2px 8px rgba(247, 247, 247, 0.582);
-			}
-		}
 	}
 }
