@@ -17,7 +17,6 @@ export const albumsReducers = (state = initialState, action) => {
 				album: action.payload,
 			};
 		case 'ALBUMS_LOADING':
-			console.log(action);
 			return {
 				...state,
 				isLoading: action.payload,
@@ -42,8 +41,6 @@ export const albumsReducers = (state = initialState, action) => {
 				),
 			};
 		case 'CREATE_ALBUM':
-			console.log(action);
-
 			return {
 				...state,
 				albums: [...state.albums, action.payload],

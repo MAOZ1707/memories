@@ -1,0 +1,23 @@
+.filter-bar-action-container {
+	display: flex;
+	height: min-content;
+	background-color: rgb(255, 255, 255);
+	position: relative;
+	padding: 10px;
+	align-items: center;
+	gap: 15px;
+	justify-content: center;
+
+	img {
+		width: 20px;
+		height: 20px;
+	}
+}
+.search-animate {
+	opacity: 0;
+	transition: all 0.5s ease;
+}
+.active {
+	opacity: 1;
+	transition: all 0.5s ease;
+}

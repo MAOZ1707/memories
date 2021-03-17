@@ -37,8 +37,6 @@ const AlbumItem = ({ info }) => {
 		dispatch({ type: 'CLEAR_ERROR' });
 	};
 
-	console.log(info);
-
 	return (
 		<Card className="album-card-container">
 			<ErrorModal error={error.error} onClear={clearError} />

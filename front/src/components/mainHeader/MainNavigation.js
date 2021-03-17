@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import SideBar from './SideBar';
 import BackDrop from '../UIElement/BackDrop';
 import NavLInks from './NavLInks';
 import MainHeader from './MainHeader';
-import SearchBox from '../searchBox/SearchBox';
+import AppLogo from './AppLogo';
 
 import './mainNavigation.style.css';
-import AppLogo from './AppLogo';
 
 const MainNavigation = () => {
 	const [sideBarOpen, setSideBarOpen] = useState(false);
@@ -27,7 +27,11 @@ const MainNavigation = () => {
 			</SideBar>
 			<MainHeader>
 				<>
-					<SearchBox SearchMode={false} />
+					<div className="header">
+						<div className="app-title">
+							<Link to={'/albums'}>Memories</Link>
+						</div>
+					</div>
 				</>
 				<AppLogo handleClick={openSideBar} />
 				<nav className="main-nav-header">

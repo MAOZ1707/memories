@@ -4,6 +4,7 @@ import { getUserAlbums } from '../../action/albumAction';
 import ErrorModal from '../UIElement/ErrorModal';
 import LoadingSpinner from '../UIElement/LoadingSpinner';
 import AlbumItem from './AlbumItem';
+import FilterBar from '../filterBar/FilterBar';
 import './userAlbum.style.css';
 
 const UserAlbums = () => {
@@ -12,11 +13,13 @@ const UserAlbums = () => {
 	const error = useSelector((state) => state.error);
 	const dispatch = useDispatch();
 
-	console.log(albumsState);
-
 	useLayoutEffect(() => {
 		dispatch(getUserAlbums(auth.userId));
-	}, [auth.token, auth.userId, dispatch]);
+	}, [auth.userId]);
+
+	const clearError = () => {
+		dispatch({ type: 'CLEAR_ERROR' });
+	};
 
 	if (
 		!albumsState.isLoading &&
@@ -31,25 +34,25 @@ const UserAlbums = () => {
 		);
 	}
 
-	const clearError = () => {
-		dispatch({ type: 'CLEAR_ERROR' });
-	};
 	return (
-		<div className="album-container-layout">
-			<ErrorModal error={error.error} onClear={clearError} />
-			{albumsState.isLoading && (
-				<div className="loading-indicator">
-					<LoadingSpinner overlay />
-				</div>
-			)}
-			{!albumsState.isLoading &&
-				albumsState.albums &&
-				albumsState.albums.map((album) => (
-					<div key={album._id}>
-						<AlbumItem info={album} />
+		<React.Fragment>
+			<FilterBar />
+			<div className="album-container-layout">
+				<ErrorModal error={error.error} onClear={clearError} />
+				{albumsState.isLoading && (
+					<div className="loading-indicator">
+						<LoadingSpinner overlay />
 					</div>
-				))}
-		</div>
+				)}
+				{!albumsState.isLoading &&
+					albumsState.albums &&
+					albumsState.albums.map((album) => (
+						<div key={album._id}>
+							<AlbumItem info={album} />
+						</div>
+					))}
+			</div>
+		</React.Fragment>
 	);
 };
 

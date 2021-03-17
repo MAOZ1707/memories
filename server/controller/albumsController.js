@@ -1,3 +1,4 @@
+/* eslint-disable node/no-unsupported-features/es-syntax */
 const { validationResult } = require('express-validator');
 const moment = require('moment'); // require
 const Albums = require('../model/albumsSchema');
@@ -7,6 +8,8 @@ const getCoordsForAddress = require('../utils/location');
 
 exports.getAlbumsByUserId = async (req, res, next) => {
 	const userId = req.params.id;
+
+	//---------------------
 
 	let existingUser;
 	try {
@@ -23,7 +26,21 @@ exports.getAlbumsByUserId = async (req, res, next) => {
 
 	let userAlbums;
 	try {
-		userAlbums = await Albums.find({ creator: userId });
+		let searchText = {};
+		if (req.query.title) {
+			const text = req.query.title;
+			searchText = { title: { $regex: text }, creator: userId };
+		}
+		if (req.query.like) {
+			searchText = { ...req.query, creator: userId };
+		}
+
+		const query = Albums.find(searchText).sort(`-createAt`);
+
+		userAlbums = await query;
+		if (userAlbums.length === 0) {
+			return next(new AppError('Could not find albums', 404));
+		}
 	} catch (error) {
 		return new AppError('Fetching user failed, please try again later.', 404);
 	}
@@ -131,8 +148,6 @@ exports.createAlbums = async (req, res, next) => {
 exports.updateAlbumById = async (req, res, next) => {
 	const albumId = req.params.id;
 
-	console.log(req.body);
-
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 		return next(
@@ -179,16 +194,12 @@ exports.updateAlbumById = async (req, res, next) => {
 exports.deleteAlbumAndImagesById = async (req, res, next) => {
 	const albumId = req.params.id;
 
-	console.log(albumId);
-
 	let album;
 	try {
 		album = await Albums.findById(albumId);
 	} catch (error) {
 		return next(new AppError('Something went wrong, could not find album'));
 	}
-
-	console.log(album);
 
 	if (!album) {
 		return next(new AppError('Could not find album for provided id'));
@@ -225,7 +236,6 @@ exports.likeAlbum = async (req, res, next) => {
 	if (!album) {
 		return next(new AppError('Could not find album!'), 404);
 	}
-	console.log(album._id);
 	// 2- toggle the current state   false->true, true->false
 
 	try {

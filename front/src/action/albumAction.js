@@ -14,13 +14,13 @@ const loading = (type, data) => {
 	};
 };
 
-export const getUserAlbums = (userId) => {
+export const getUserAlbums = (userId, key, search = '') => {
 	return async (dispatch, getState) => {
 		const { auth } = getState();
 		dispatch(loading('ALBUMS_LOADING', true));
 		try {
 			const response = await axios({
-				url: `/api/albums/user/${userId}`,
+				url: `/api/albums/user/${userId}?${key}=${search}`,
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
@@ -32,6 +32,7 @@ export const getUserAlbums = (userId) => {
 			dispatch(loading('ALBUMS_LOADING', false));
 		} catch (error) {
 			dispatch(loading('ALBUMS_LOADING', false));
+			// todo Error handle
 			console.log(error.response.data.message);
 		}
 	};
