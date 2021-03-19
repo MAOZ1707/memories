@@ -9,15 +9,19 @@ const ErrorMsg = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if (error.isOpen) {
+		if (error.authErrorShow) {
 			setTimeout(() => {
-				dispatch({ type: 'CLEAR_ERROR' });
+				dispatch({ type: 'CLEAR_AUTH_ERROR' });
 			}, 8000);
 		}
 	});
 
 	return (
-		<>{error.isOpen && <div className="error-message">{error.error}</div>}</>
+		<>
+			{error.authErrorShow && (
+				<div className="error-message">{error.authError}</div>
+			)}
+		</>
 	);
 };
 

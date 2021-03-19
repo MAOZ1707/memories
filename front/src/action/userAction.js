@@ -10,7 +10,7 @@ export const authSuccess = (token, userId) => {
 };
 const authFailure = (error) => {
 	return {
-		type: 'ERROR',
+		type: 'AUTH_ERROR',
 		error,
 	};
 };

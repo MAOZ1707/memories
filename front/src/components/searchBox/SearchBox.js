@@ -4,13 +4,12 @@ import { getUserAlbums } from '../../action/albumAction';
 import ErrorModal from '../UIElement/ErrorModal';
 import './search.style.css';
 
-const SearchBox = ({ open }) => {
+const SearchBox = () => {
 	const dispatch = useDispatch();
 	const { userId } = useSelector((state) => state.auth);
 	const [input, setInput] = useState('');
 	const [active, setActive] = useState(false);
 	const error = useSelector((state) => state.error);
-	console.log(error);
 
 	let inputRef = useRef();
 

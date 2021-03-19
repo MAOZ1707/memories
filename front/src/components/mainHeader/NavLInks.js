@@ -11,8 +11,6 @@ import './navLinks.style.css';
 const NavLInks = () => {
 	const auth = useSelector((state) => state.auth);
 
-	console.log(auth);
-
 	const dispatch = useDispatch();
 	const history = useHistory();
 

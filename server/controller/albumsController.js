@@ -25,10 +25,8 @@ exports.getAlbumsByUserId = async (req, res, next) => {
 	}
 
 	let userAlbums;
-	console.log(existingUser._id);
 	try {
 		userAlbums = await Albums.find({ creator: existingUser._id });
-		console.log(userAlbums);
 		if (userAlbums.length === 0) {
 			return next(
 				new AppError('Could not find user albums for the provided user id', 404)

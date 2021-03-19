@@ -9,7 +9,6 @@ import './userAlbum.style.css';
 const UserAlbums = () => {
 	const auth = useSelector((state) => state.auth);
 	const albumsState = useSelector((state) => state.albums);
-	const error = useSelector((state) => state.error);
 	const dispatch = useDispatch();
 
 	useLayoutEffect(() => {

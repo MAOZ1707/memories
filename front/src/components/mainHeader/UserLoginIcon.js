@@ -9,8 +9,8 @@ const UserLoginIcon = () => {
 	const [charB, setCharB] = useState();
 
 	useEffect(() => {
-		setCharA(auth.firstName.charAt(0));
-		setCharB(auth.lastName.charAt(0));
+		setCharA(auth.firstName.charAt(0).toUpperCase());
+		setCharB(auth.lastName.charAt(0).toUpperCase());
 	}, [auth.firstName, auth.lastName]);
 
 	return <div className="user-login-icon">{`${charA}.${charB}`}</div>;

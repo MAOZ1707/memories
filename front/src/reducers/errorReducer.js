@@ -1,6 +1,8 @@
 const initialState = {
 	error: null,
 	isOpen: false,
+	authError: null,
+	authErrorShow: false,
 };
 
 export const errorReducer = (state = initialState, action) => {
@@ -17,6 +19,18 @@ export const errorReducer = (state = initialState, action) => {
 				...state,
 				error: null,
 				isOpen: false,
+			};
+		case 'AUTH_ERROR':
+			return {
+				...state,
+				authError: action.error,
+				authErrorShow: true,
+			};
+		case 'CLEAR_AUTH_ERROR':
+			return {
+				...state,
+				authError: null,
+				authErrorShow: false,
 			};
 		default:
 			return state;
