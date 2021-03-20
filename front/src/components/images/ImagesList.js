@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { getAlbumById } from '../../action/albumAction';
 import { getImagesByAlbumId } from '../../action/imageAction.js';
 import ImageItem from './ImageItem';
@@ -18,8 +18,7 @@ const ImagesList = () => {
 	const imageState = useSelector((state) => state.images);
 	const error = useSelector((state) => state.error);
 	const { albumId } = useParams();
-
-	console.log(imageState);
+	const history = useHistory();
 
 	useEffect(() => {
 		dispatch(getImagesByAlbumId(albumId));
@@ -39,6 +38,9 @@ const ImagesList = () => {
 					<p>No images, please upload.</p>
 					<Button submit>
 						<Link to={`/album/${albumId}/images/upload`}>Upload</Link>
+					</Button>
+					<Button back onClick={() => history.goBack()}>
+						Go back
 					</Button>
 				</div>
 			) : (

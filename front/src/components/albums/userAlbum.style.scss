@@ -11,3 +11,17 @@
 	width: 100%;
 	height: 100%;
 }
+
+.no-albums {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.no-album-message {
+		font-size: 1rem;
+		text-align: center;
+		line-height: 25px;
+		margin: 10px 0;
+	}
+}

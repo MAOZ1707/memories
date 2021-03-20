@@ -7,6 +7,7 @@ import LoadingSpinner from '../UIElement/LoadingSpinner';
 
 import './uploadImage.style.css';
 import ErrorModal from '../UIElement/ErrorModal';
+import Button from '../UIElement/Button';
 
 const thumbsContainer = {
 	display: 'flex',
@@ -89,10 +90,6 @@ const UpLoadImage = () => {
 		history.push(`/album/${albumId}/images`);
 	}
 
-	const testBtn = () => {
-		history.push(`/album/${albumId}/images`);
-	};
-
 	useEffect(() => {
 		dispatch({ type: 'UPLOAD_STATUS', payload: 0 });
 		setLoading(imageState.isLoading);
@@ -168,8 +165,12 @@ const UpLoadImage = () => {
 			</div>
 			<h4>Preview</h4>
 			<aside style={thumbsContainer}>{thumbs}</aside>
-			<button onClick={sendFiles}>dispatch</button>
-			<button onClick={testBtn}>Go Back</button>
+			<Button submit onClick={sendFiles}>
+				Upload
+			</Button>
+			<Button back onClick={() => history.goBack()}>
+				Go Back
+			</Button>
 		</section>
 	);
 };

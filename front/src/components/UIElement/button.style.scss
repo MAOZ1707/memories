@@ -80,3 +80,32 @@
 		box-shadow: 0 2px 8px rgba(247, 247, 247, 0.582);
 	}
 }
+
+.btn-back {
+	width: 150px;
+	font-size: 0.8rem;
+	padding: 2px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	background-color: #ffffff;
+	border-radius: 5px;
+	color: rgb(0, 0, 0);
+	cursor: pointer;
+	transition: all 0.4s linear;
+	a {
+		color: #fff;
+		font-size: 0.8rem;
+	}
+	&:hover img {
+		transform: translate(-10px);
+	}
+
+	img {
+		width: 20px;
+		height: 20px;
+		transition: all 0.4s linear;
+	}
+}

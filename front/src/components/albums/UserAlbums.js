@@ -1,19 +1,21 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAlbums } from '../../action/albumAction';
-import LoadingSpinner from '../UIElement/LoadingSpinner';
 import AlbumItem from './AlbumItem';
 import FilterBar from '../filterBar/FilterBar';
+import LoadingSpinner from '../UIElement/LoadingSpinner';
+import Button from '../UIElement/Button';
 import './userAlbum.style.css';
+import { Link } from 'react-router-dom';
 
 const UserAlbums = () => {
 	const auth = useSelector((state) => state.auth);
 	const albumsState = useSelector((state) => state.albums);
 	const dispatch = useDispatch();
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		dispatch(getUserAlbums(auth.userId));
-	}, [auth.userId]);
+	}, [auth.userId, dispatch, auth.token]);
 
 	if (
 		!albumsState.isLoading &&
@@ -23,7 +25,12 @@ const UserAlbums = () => {
 		return (
 			<div className="no-albums">
 				{albumsState.isLoading && <LoadingSpinner overlay />}
-				No albums founds, do you want to create?
+				<p className="no-album-message">
+					No albums founds, do you want to create?
+				</p>
+				<Button submit>
+					<Link to="/user/create-album">Create album</Link>
+				</Button>
 			</div>
 		);
 	}

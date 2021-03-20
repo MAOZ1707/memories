@@ -12,7 +12,8 @@
   border-top: 1;
   width: 90%;
   max-width: 150px;
-  height: 150px;
+  height: auto;
+  max-height: 150px;
   -o-object-fit: cover;
      object-fit: cover;
   outline: 1px solid #b1b0b0;

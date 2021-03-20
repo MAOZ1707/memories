@@ -38,9 +38,6 @@ export const getUserAlbums = (userId, key, search = '') => {
 			dispatch(loading('ALBUMS_LOADING', false));
 		} catch (error) {
 			dispatch(loading('ALBUMS_LOADING', false));
-			const err = error.response.data.message;
-			console.log(err);
-			dispatch(errorHandler('ERROR', err));
 		}
 	};
 };

@@ -105,4 +105,47 @@
   -webkit-box-shadow: 0 2px 8px rgba(247, 247, 247, 0.582);
           box-shadow: 0 2px 8px rgba(247, 247, 247, 0.582);
 }
+
+.btn-back {
+  width: 150px;
+  font-size: 0.8rem;
+  padding: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  -webkit-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+}
+
+.btn-back a {
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+.btn-back:hover img {
+  -webkit-transform: translate(-10px);
+          transform: translate(-10px);
+}
+
+.btn-back img {
+  width: 20px;
+  height: 20px;
+  -webkit-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+}
 /*# sourceMappingURL=button.style.css.map */

@@ -11,6 +11,7 @@ import ImagesList from './images/ImagesList';
 import UploadImage from './images/UpLoadImage';
 import Cinema from './cinema/Cinema';
 import Studio from './studio/Studio';
+import CreateAlbum from './albums/CreateAlbum';
 
 const Dashboard = () => {
 	return (
@@ -32,6 +33,9 @@ const Dashboard = () => {
 						</Route>
 						<Route path="/image/:imageId/studio">
 							<Studio />
+						</Route>
+						<Route path={`/user/create-album`}>
+							<CreateAlbum />
 						</Route>
 						<Redirect to="/albums" />
 					</Switch>

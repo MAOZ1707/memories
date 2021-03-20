@@ -1,23 +1,22 @@
 import React, { useRef } from 'react';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import './createAlbum.style.css';
 import Thumb from './Thumb';
 import { createAlbum } from '../../action/albumAction';
 import LoadingSpinner from '../UIElement/LoadingSpinner';
 import ErrorModal from '../UIElement/ErrorModal';
+import Button from '../UIElement/Button';
+
+import './createAlbum.style.css';
 
 const CreateAlbum = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const albumsState = useSelector((state) => state.albums);
 	const error = useSelector((state) => state.error);
-
-	console.log(albumsState);
 
 	const fileInputRef = useRef();
 
@@ -141,7 +140,9 @@ const CreateAlbum = () => {
 							</button>
 						</div>
 
-						<button type="submit">Submit</button>
+						<Button submit type="submit">
+							Submit
+						</Button>
 					</Form>
 				)}
 			</Formik>

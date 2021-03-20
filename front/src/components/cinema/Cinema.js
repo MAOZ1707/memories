@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useParams, useHistory } from 'react-router';
 import { getImagesByAlbumId } from '../../action/imageAction';
 
 import 'react-image-gallery/styles/css/image-gallery.css';
 import ImageGallery from 'react-image-gallery';
 import './cinema.style.css';
+import Button from '../UIElement/Button';
 
 const Cinema = () => {
 	const { albumId } = useParams();
+	const history = useHistory();
 	const dispatch = useDispatch();
 	const images = useSelector((state) => state.images.images);
 	const [imageGallery, setImageGallery] = useState([]);
-
-	console.log(images);
 
 	useEffect(() => {
 		dispatch(getImagesByAlbumId(albumId));
@@ -29,7 +29,14 @@ const Cinema = () => {
 		}
 	}, [albumId]);
 
-	return images && <ImageGallery items={imageGallery} lazyLoad={true} />;
+	return (
+		<React.Fragment>
+			{images && <ImageGallery items={imageGallery} lazyLoad={true} />}
+			<Button back onClick={() => history.goBack()}>
+				Go back
+			</Button>
+		</React.Fragment>
+	);
 };
 
 export default Cinema;
