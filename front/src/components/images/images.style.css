@@ -9,6 +9,13 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
+@media (min-width: 768px) {
+  .images-list-container {
+    -ms-grid-columns: (minmax(350px, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
 .no-image-container {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;

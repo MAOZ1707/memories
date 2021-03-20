@@ -12,11 +12,9 @@ const NavLInks = () => {
 	const auth = useSelector((state) => state.auth);
 
 	const dispatch = useDispatch();
-	const history = useHistory();
 
 	const logOutUser = () => {
 		dispatch(logOut());
-		history.push('/signup');
 	};
 
 	return (
@@ -42,15 +40,17 @@ const NavLInks = () => {
 			>
 				Log Out
 			</ReactToolTip>
-			<button className="log-out-btn" to="/" onClick={logOutUser}>
-				<img
-					className="log-out-icon"
-					alt="logout"
-					data-tip
-					data-for="logTip"
-					src="https://img.icons8.com/ios/50/000000/exit.png"
-				/>
-			</button>
+			{auth.isLogin && (
+				<button className="log-out-btn" to="/" onClick={logOutUser}>
+					<img
+						className="log-out-icon"
+						alt="logout"
+						data-tip
+						data-for="logTip"
+						src="https://img.icons8.com/ios/50/000000/exit.png"
+					/>
+				</button>
+			)}
 		</ul>
 	);
 };

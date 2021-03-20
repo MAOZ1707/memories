@@ -18,4 +18,10 @@
   height: 70px;
   border-radius: 50%;
 }
+
+@media (min-width: 768px) {
+  .user-login-icon {
+    display: none;
+  }
+}
 /*# sourceMappingURL=userLoginIcon.style.css.map */

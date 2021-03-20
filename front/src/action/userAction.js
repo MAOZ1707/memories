@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { loadingSpinner } from './loadingAction';
+import { getUserAlbums } from './albumAction';
 
 export const authSuccess = (token, userId) => {
 	return {
@@ -41,6 +42,7 @@ export const signUp = ({ ...values }) => {
 
 			dispatch(loadingSpinner(false, 'AUTH_LOADING'));
 			dispatch(authSuccess(response.data.token, response.data.user._id));
+			dispatch(getUserAlbums(response.data.user._id, '', ''));
 		} catch (error) {
 			if (error.response.data) {
 				dispatch(loadingSpinner(false));
@@ -73,6 +75,7 @@ export const logIn = ({ ...values }) => {
 
 			dispatch(loadingSpinner(false, 'AUTH_LOADING'));
 			dispatch(authSuccess(response.data.token, response.data.user._id));
+			dispatch(getUserAlbums(response.data.user._id));
 		} catch (error) {
 			dispatch(loadingSpinner(false, 'AUTH_LOADING'));
 			dispatch(authFailure(error.response.data.message));
@@ -94,8 +97,12 @@ export const authCheck = () => {
 };
 
 export const logOut = () => {
-	localStorage.removeItem('userData');
-	return { type: 'LOG_OUT' };
+	console.log('log-out');
+	return (dispatch) => {
+		localStorage.removeItem('userData');
+		dispatch({ type: 'LOG_OUT' });
+		dispatch({ type: 'USER_LOGGED_OUT' });
+	};
 };
 
 export const getUserFullName = () => {

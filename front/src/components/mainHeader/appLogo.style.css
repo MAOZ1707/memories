@@ -8,6 +8,12 @@
   border: none;
 }
 
+@media (min-width: 768px) {
+  .app-logo-style {
+    display: none;
+  }
+}
+
 .app-logo-style .balls-wrapper {
   width: 100%;
   background-color: #fff;

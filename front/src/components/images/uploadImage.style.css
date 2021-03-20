@@ -12,6 +12,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0;
+  width: 100%;
 }
 
 .container h4 {
@@ -22,5 +24,35 @@
 
 .container button {
   margin-top: 20px;
+}
+
+.container .thumbsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background: #fff;
+  border: 1px solid #babdbd;
+  margin: 0;
+  outline: none;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .container .thumbsContainer {
+    width: 40%;
+  }
 }
 /*# sourceMappingURL=uploadImage.style.css.map */

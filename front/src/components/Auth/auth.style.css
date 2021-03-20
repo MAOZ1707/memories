@@ -46,6 +46,13 @@
   padding: 10px;
 }
 
+@media (min-width: 768px) {
+  .auth-container form {
+    width: 400px;
+    max-width: 500px;
+  }
+}
+
 .form-controller {
   position: relative;
   margin-bottom: 1.5rem;

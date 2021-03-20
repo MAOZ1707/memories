@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const fetchSuccess = (type, data) => {
+export const fetchSuccess = (type, data) => {
 	return {
 		type,
 		payload: data,
@@ -20,7 +20,8 @@ const errorHandler = (type, err) => {
 		error: err,
 	};
 };
-export const getUserAlbums = (userId, key, search = '') => {
+export const getUserAlbums = (userId, key = '', search = '') => {
+	console.log(userId);
 	return async (dispatch, getState) => {
 		const { auth } = getState();
 		dispatch(loading('ALBUMS_LOADING', true));

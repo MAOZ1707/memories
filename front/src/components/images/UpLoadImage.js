@@ -20,8 +20,8 @@ const thumbsContainer = {
 	margin: 0,
 	outline: 'none',
 	width: '100%',
-	minHeight: '200px',
-	padding: '10px',
+	// minHeight: '200px',
+	// padding: '10px',
 	height: 'auto',
 };
 
@@ -164,7 +164,7 @@ const UpLoadImage = () => {
 				</p>
 			</div>
 			<h4>Preview</h4>
-			<aside style={thumbsContainer}>{thumbs}</aside>
+			<aside className="thumbsContainer">{thumbs}</aside>
 			<Button submit onClick={sendFiles}>
 				Upload
 			</Button>
