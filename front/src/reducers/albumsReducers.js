@@ -2,6 +2,7 @@ const initialState = {
 	albums: [],
 	album: {},
 	isLoading: false,
+	status: null,
 };
 
 export const albumsReducers = (state = initialState, action) => {
@@ -10,6 +11,7 @@ export const albumsReducers = (state = initialState, action) => {
 			return {
 				...state,
 				albums: action.payload,
+				status: null,
 			};
 		case 'GET_ALBUM':
 			return {
@@ -29,21 +31,18 @@ export const albumsReducers = (state = initialState, action) => {
 		case 'LIKE_ALBUM':
 			return {
 				...state,
-				albums: state.albums.map((album) =>
-					album._id === action.payload._id ? action.payload : album
-				),
+				albums: state.albums.map((album) => (album._id === action.payload._id ? action.payload : album)),
 			};
 		case 'UPDATE_ALBUM':
 			return {
 				...state,
-				albums: state.albums.map((album) =>
-					album._id === action.payload._id ? action.payload : album
-				),
+				albums: state.albums.map((album) => (album._id === action.payload._id ? action.payload : album)),
 			};
 		case 'CREATE_ALBUM':
 			return {
 				...state,
-				albums: [...state.albums, action.payload],
+				albums: [...state.albums, action.payload.album],
+				status: action.payload.status,
 			};
 
 		default:

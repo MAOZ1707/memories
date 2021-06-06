@@ -224,16 +224,7 @@ exports.uploadImages = async (req, res, next) => {
 	}
 
 	try {
-		// images.forEach(async (img) => {
-		// 	const newImage = await Images.create({
-		// 		imageUrl: img.location,
-		// 		albumId: albumId,
-		// 		like: false,
-		// 	});
-		// 	res.status(200).json({ image: newImage });
-		// });
 
-		//============
 		let result = images.map((img) => {
 			let finalImage = {
 				imageUrl: img.location,

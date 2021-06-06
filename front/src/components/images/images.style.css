@@ -68,7 +68,7 @@
 .image-wrapper {
   background: #fff;
   width: 100%;
-  height: 400px;
+  max-height: 400px;
   justify-self: center;
   overflow: hidden;
   outline-style: solid;

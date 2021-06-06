@@ -7,8 +7,8 @@
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
-  -webkit-transition: all 0.4s linear;
-  transition: all 0.4s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
 }
 
 .btn-submit a {
@@ -17,8 +17,8 @@
 }
 
 .btn-submit:hover {
-  -webkit-transition: all 0.4s linear;
-  transition: all 0.4s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   -webkit-box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.37);
@@ -128,8 +128,8 @@
   border-radius: 5px;
   color: black;
   cursor: pointer;
-  -webkit-transition: all 0.4s linear;
-  transition: all 0.4s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
 }
 
 .btn-back a {
@@ -145,7 +145,7 @@
 .btn-back img {
   width: 20px;
   height: 20px;
-  -webkit-transition: all 0.4s linear;
-  transition: all 0.4s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
 }
 /*# sourceMappingURL=button.style.css.map */
