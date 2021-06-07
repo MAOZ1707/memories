@@ -26,7 +26,7 @@ export const getUserAlbums = (userId) => {
 		dispatch(loading('ALBUMS_LOADING', true))
 		try {
 			const response = await axios({
-				url: `/api/albums/user/${userId}`,
+				url: `${process.env.REACT_APP_BACKEND_URL}/api/albums/user/${userId}`,
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export const getAlbumById = (albumId) => {
 		dispatch(loading('ALBUMS_LOADING', true))
 		try {
 			const response = await axios({
-				url: `/api/albums/${albumId}`,
+				url: `${process.env.REACT_APP_BACKEND_URL}/api/albums/${albumId}`,
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ export const deleteUserAlbum = (albumId) => {
 
 		try {
 			await axios({
-				url: `/api/albums/${albumId}`,
+				url: `${process.env.REACT_APP_BACKEND_URL}/api/albums/${albumId}`,
 				method: 'DELETE',
 				headers: {
 					'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ export const likeAlbum = (albumId) => {
 		dispatch(loading('ALBUMS_LOADING', true))
 		try {
 			const response = await axios({
-				url: `/api/albums/${albumId}/like-album`,
+				url: `${process.env.REACT_APP_BACKEND_URL}/api/albums/${albumId}/like-album`,
 				method: 'PATCH',
 				headers: {
 					'Content-Type': 'application/json',
@@ -122,7 +122,7 @@ export const updateAlbumById = (albumId, update) => {
 		dispatch(loading('ALBUMS_LOADING', true))
 		try {
 			const response = await axios({
-				url: `/api/albums/${albumId}`,
+				url: `${process.env.REACT_APP_BACKEND_URL}/api/albums/${albumId}`,
 				method: 'PATCH',
 				data: {
 					title: update.title,
@@ -159,7 +159,7 @@ export const createAlbum = (newAlbum) => {
 			formData.append('creator', auth.userId)
 
 			const response = await axios({
-				url: `/api/albums`,
+				url: `${process.env.REACT_APP_BACKEND_URL}/api/albums`,
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
