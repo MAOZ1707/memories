@@ -133,7 +133,6 @@ export const updateAlbumById = (albumId, update) => {
 					Authorization: 'Bearer ' + auth.token,
 				},
 			})
-
 			const data = await response.data.album
 			dispatch({ type: 'UPDATE_ALBUM', payload: data })
 			dispatch(loading('ALBUMS_LOADING', false))
