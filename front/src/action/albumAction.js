@@ -98,9 +98,10 @@ export const likeAlbum = (albumId) => {
 		try {
 			const response = await axios({
 				url: `${process.env.REACT_APP_BACKEND_URL}/api/albums/${albumId}/like-album`,
-				method: 'PATCH',
+				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',
+					'Access-Control-Allow-Methods': 'GET,PUT,POST,PATCH,DELETE,OPTIONS',
 					Authorization: 'Bearer ' + auth.token,
 				},
 			})
@@ -123,13 +124,14 @@ export const updateAlbumById = (albumId, update) => {
 		try {
 			const response = await axios({
 				url: `${process.env.REACT_APP_BACKEND_URL}/api/albums/${albumId}`,
-				method: 'PATCH',
+				method: 'PUT',
 				data: {
 					title: update.title,
 					description: update.description,
 				},
 				headers: {
 					'Content-Type': 'application/json',
+					'Access-Control-Allow-Methods': 'GET,PUT,POST,PATCH,DELETE,OPTIONS',
 					Authorization: 'Bearer ' + auth.token,
 				},
 			})

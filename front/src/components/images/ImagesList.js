@@ -33,19 +33,19 @@ const ImagesList = () => {
 		<div className='images-list-container'>
 			{imageState.isLoading && <LoadingSpinner overlay />}
 			<ErrorModal error={error.error} onClear={clearError} />
+			{imageState.images.length > 0 && <ActionBar albumId={albumId} />}
 			{imageState.images.length === 0 ? (
 				<div className='no-image-container'>
 					<p>No images, please upload.</p>
 					<Button submit>
 						<Link to={`/album/${albumId}/images/upload`}>Upload</Link>
 					</Button>
-					<Button back onClick={() => history.goBack()}>
+					<Button back onClick={() => history.push('/albums')}>
 						Go back
 					</Button>
 				</div>
 			) : (
 				<React.Fragment>
-					{imageState.images.length > 0 && <ActionBar albumId={albumId} />}
 					{imageState.images.length > 0 &&
 						imageState.images.map((image) => (
 							<React.Fragment key={image.imageUrl}>

@@ -17,14 +17,14 @@ const FilterBar = () => {
 	}
 
 	const dispatchAction = useCallback((arg) => {
-		dispatch(getUserAlbums(userId, 'like', arg))
+		dispatch({ type: 'SEARCH_LIKE', payload: arg })
 	}, [])
 
 	useEffect(() => {
 		if (likeMode) {
-			dispatchAction('true')
+			dispatchAction(true)
 		} else {
-			dispatchAction('')
+			dispatchAction(null)
 		}
 	}, [dispatchAction, likeMode, userId])
 

@@ -11,14 +11,21 @@ import { Link } from 'react-router-dom'
 const UserAlbums = () => {
 	const auth = useSelector((state) => state.auth)
 	const albumsState = useSelector((state) => state.albums)
-	const { searchTerm } = useSelector((state) => state.search)
+	const { searchTerm, searchLike } = useSelector((state) => state.search)
 	const dispatch = useDispatch()
 
 	let searchAlbum =
 		albumsState.albums &&
-		albumsState.albums.filter((album) =>
-			album.title.toLowerCase().includes(searchTerm.toLowerCase())
-		)
+		albumsState.albums.filter((album) => {
+			if (searchLike) {
+				return (
+					album.like === searchLike &&
+					album.title.toLowerCase().includes(searchTerm.toLowerCase())
+				)
+			} else {
+				return album.title.toLowerCase().includes(searchTerm.toLowerCase())
+			}
+		})
 
 	useEffect(() => {
 		dispatch(getUserAlbums(auth.userId))

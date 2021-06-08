@@ -28,9 +28,11 @@ export const likeImage = (imageId) => {
 		try {
 			const response = await axios({
 				url: `${process.env.REACT_APP_BACKEND_URL}/api/images/${imageId}/like-image`,
-				method: 'PATCH',
+				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',
+					'Access-Control-Allow-Methods': 'GET,PUT,POST,PATCH,DELETE,OPTIONS',
+
 					Authorization: 'Bearer ' + auth.token,
 				},
 			})
@@ -157,9 +159,10 @@ export const addImageStyle = (filters, imageId) => {
 		try {
 			const response = await axios({
 				url: `${process.env.REACT_APP_BACKEND_URL}/api/images/${imageId}/studio`,
-				method: 'PATCH',
+				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',
+					'Access-Control-Allow-Methods': 'GET,PUT,POST,PATCH,DELETE,OPTIONS',
 					Authorization: 'Bearer ' + auth.token,
 				},
 				data: filters,

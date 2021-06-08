@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 
+import mapboxgl from 'mapbox-gl'
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default
+
 const Map = ({ lng = 0, lat = 0, address }) => {
 	const [viewport, setViewport] = useState({
 		width: '100%',
