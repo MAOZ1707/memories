@@ -37,6 +37,7 @@ const SearchBox = () => {
 			<button
 				className='search-btn'
 				aria-label='submit search'
+				style={{ cursor: 'pointer' }}
 				onClick={activeSearch}>
 				{!active ? (
 					<img

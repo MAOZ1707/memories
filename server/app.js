@@ -11,6 +11,7 @@ const albumsRouter = require('./routes/albumsRoute')
 const imagesRouter = require('./routes/imageRoute')
 
 app.use(cors({ origin: true, credentials: true }))
+app.options('*', cors())
 app.use(express.json())
 app.use(morgan('dev'))
 

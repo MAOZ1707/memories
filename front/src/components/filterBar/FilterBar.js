@@ -34,11 +34,13 @@ const FilterBar = () => {
 			<div onClick={handleLike}>
 				{likeMode ? (
 					<img
+						style={{ cursor: 'pointer' }}
 						src='https://img.icons8.com/ios-filled/50/fa314a/filled-like.png'
 						alt='like-fill'
 					/>
 				) : (
 					<img
+						style={{ cursor: 'pointer' }}
 						src='https://img.icons8.com/ios/50/000000/like.png'
 						alt='like-filter'
 					/>

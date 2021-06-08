@@ -1,37 +1,43 @@
 /* eslint-disable no-useless-escape */
-const express = require('express');
+const express = require('express')
 
-const { body } = require('express-validator');
+const cors = require('cors')
 
-const imagesController = require('../controller/imageController');
+const app = express()
 
-const uploadS3 = require('../middleware/multer');
+const { body } = require('express-validator')
 
-const checkAuth = require('../middleware/checkAuth');
+const imagesController = require('../controller/imageController')
 
-const router = express.Router();
+const uploadS3 = require('../middleware/multer')
 
-router.use(checkAuth);
+const checkAuth = require('../middleware/checkAuth')
+
+const router = express.Router()
+
+router.use(checkAuth)
 router
 	.route('/album/:id')
 	.get(imagesController.getImagesByAlbumId)
-	.delete(imagesController.deleteAllImages);
+	.delete(imagesController.deleteAllImages)
 
 router
 	.route('/')
-	.post(body('imageUrl').notEmpty().isString(), imagesController.createImages);
+	.post(body('imageUrl').notEmpty().isString(), imagesController.createImages)
 
 router
 	.route('/:id')
 	.get(imagesController.getImageById)
-	.delete(imagesController.deleteImageById);
+	.delete(imagesController.deleteImageById)
 
-router.route('/:id/like-image').patch(imagesController.likeImage);
+app.options('/:id/like-image', cors())
+router.route('/:id/like-image').put(cors(), imagesController.likeImage)
 
-router.route('/:id/studio').patch(imagesController.addImageStyle);
+app.options('/:id/studio', cors())
+router.route('/:id/studio').put(cors(), imagesController.addImageStyle)
 
 router
 	.route('/album/:id/upload')
-	.post(uploadS3.array('image', 4), imagesController.uploadImages);
+	.post(uploadS3.array('image', 4), imagesController.uploadImages)
 
-module.exports = router;
+module.exports = router

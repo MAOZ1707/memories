@@ -6,8 +6,25 @@ const app = require('./app')
 
 dotenv.config({ path: './config.env' })
 
+app.options('*', cors())
 app.use(cors())
 app.use(cors({ origin: true, credentials: true }))
+
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', '*')
+	res.header('Access-Control-Allow-Credentials', true)
+	req.header('Referer')
+	res.header(
+		'Access-Control-Allow-Methods',
+		'GET,PUT,POST,PATCH,DELETE,OPTIONS'
+	)
+	res.header(
+		'Access-Control-Allow-Headers',
+		'Origin,X-Requested-With,Content-Type',
+		'Accept,content-type,application/json'
+	)
+	next()
+})
 
 let dbUrl = process.env.DB_ATLAS_URL
 

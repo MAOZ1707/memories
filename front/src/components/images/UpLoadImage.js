@@ -1,13 +1,13 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useDropzone } from 'react-dropzone';
-import { uploadImages } from '../../action/imageAction';
-import { useHistory, useParams } from 'react-router-dom';
-import LoadingSpinner from '../UIElement/LoadingSpinner';
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useDropzone } from 'react-dropzone'
+import { uploadImages } from '../../action/imageAction'
+import { useHistory, useParams } from 'react-router-dom'
+import LoadingSpinner from '../UIElement/LoadingSpinner'
 
-import './uploadImage.style.css';
-import ErrorModal from '../UIElement/ErrorModal';
-import Button from '../UIElement/Button';
+import './uploadImage.style.css'
+import ErrorModal from '../UIElement/ErrorModal'
+import Button from '../UIElement/Button'
 
 const thumbsContainer = {
 	display: 'flex',
@@ -23,7 +23,7 @@ const thumbsContainer = {
 	// minHeight: '200px',
 	// padding: '10px',
 	height: 'auto',
-};
+}
 
 const thumb = {
 	display: 'inline-flex',
@@ -34,29 +34,27 @@ const thumb = {
 	height: 150,
 	padding: 4,
 	boxSizing: 'border-box',
-};
+}
 
 const thumbInner = {
 	display: 'flex',
 	minWidth: 0,
 	overflow: 'hidden',
-};
+}
 
 const img = {
 	display: 'block',
 	width: '100%',
 	objectFit: 'cover',
-};
+}
 
 const UpLoadImage = () => {
-	const [previewImages, setPreviewImages] = useState([]);
-	const imageState = useSelector((state) => state.images);
-	const history = useHistory();
-	const [loading, setLoading] = useState(false);
-	const [status, setStatus] = useState(null);
-	const error = useSelector((state) => state.error);
-
-	console.log(status);
+	const [previewImages, setPreviewImages] = useState([])
+	const imageState = useSelector((state) => state.images)
+	const history = useHistory()
+	const [loading, setLoading] = useState(false)
+	const [status, setStatus] = useState(null)
+	const error = useSelector((state) => state.error)
 
 	const {
 		acceptedFiles,
@@ -74,42 +72,42 @@ const UpLoadImage = () => {
 						preview: URL.createObjectURL(file),
 					})
 				)
-			);
+			)
 		},
-	});
-	const dispatch = useDispatch();
+	})
+	const dispatch = useDispatch()
 
-	const { albumId } = useParams();
+	const { albumId } = useParams()
 
 	const sendFiles = () => {
-		const formD = new FormData();
-		acceptedFiles.forEach((file) => formD.append(`image`, file));
-		dispatch(uploadImages(albumId, formD));
-	};
+		const formD = new FormData()
+		acceptedFiles.forEach((file) => formD.append(`image`, file))
+		dispatch(uploadImages(albumId, formD))
+	}
 	if (status === 200) {
-		history.push(`/album/${albumId}/images`);
+		history.push(`/album/${albumId}/images`)
 	}
 
 	useEffect(() => {
-		dispatch({ type: 'UPLOAD_STATUS', payload: 0 });
-		setLoading(imageState.isLoading);
-		setStatus(imageState.uploadStatus);
-	}, [imageState.isLoading, imageState.uploadStatus]);
+		dispatch({ type: 'UPLOAD_STATUS', payload: 0 })
+		setLoading(imageState.isLoading)
+		setStatus(imageState.uploadStatus)
+	}, [imageState.isLoading, imageState.uploadStatus])
 
 	useEffect(
 		() => () => {
-			previewImages.forEach((file) => URL.revokeObjectURL(file.preview));
+			previewImages.forEach((file) => URL.revokeObjectURL(file.preview))
 		},
 		[previewImages]
-	);
+	)
 
 	const thumbs = previewImages.map((file) => (
 		<div style={thumb} key={file.name}>
 			<div style={thumbInner}>
-				<img src={file.preview} alt="prev" style={img} />
+				<img src={file.preview} alt='prev' style={img} />
 			</div>
 		</div>
-	));
+	))
 	const baseStyle = {
 		flex: 1,
 		display: 'flex',
@@ -126,18 +124,18 @@ const UpLoadImage = () => {
 		marginTop: 20,
 		textAlign: 'center',
 		transition: 'border .24s ease-in-out',
-	};
+	}
 	const activeStyle = {
 		borderColor: '#2196f3',
-	};
+	}
 
 	const acceptStyle = {
 		borderColor: '#00e676',
-	};
+	}
 
 	const rejectStyle = {
 		borderColor: '#ff1744',
-	};
+	}
 
 	const style = useMemo(
 		() => ({
@@ -147,24 +145,24 @@ const UpLoadImage = () => {
 			...(isDragReject ? rejectStyle : {}),
 		}),
 		[isDragActive, isDragReject, isDragAccept]
-	);
+	)
 
 	const clearError = () => {
-		dispatch({ type: 'CLEAR_ERROR' });
-	};
+		dispatch({ type: 'CLEAR_ERROR' })
+	}
 
 	return (
-		<section className="container">
+		<section className='container'>
 			<ErrorModal error={error.error} onClear={clearError} />
 			{loading && <LoadingSpinner overlay />}
 			<div {...getRootProps({ style })}>
 				<input {...getInputProps()} />
-				<p className="drop-zone">
+				<p className='drop-zone'>
 					Drag 'n' drop some files here, or click to select files
 				</p>
 			</div>
 			<h4>Preview</h4>
-			<aside className="thumbsContainer">{thumbs}</aside>
+			<aside className='thumbsContainer'>{thumbs}</aside>
 			<Button submit onClick={sendFiles}>
 				Upload
 			</Button>
@@ -172,7 +170,7 @@ const UpLoadImage = () => {
 				Go Back
 			</Button>
 		</section>
-	);
-};
+	)
+}
 
-export default UpLoadImage;
+export default UpLoadImage

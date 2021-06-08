@@ -4,7 +4,6 @@ const initialState = {
 }
 
 export const searchReducer = (state = initialState, action) => {
-	console.log(state)
 	switch (action.type) {
 		case 'SEARCH_MODE':
 			return {

@@ -117,7 +117,6 @@ export const getUserFullName = () => {
 				},
 			})
 			const responseData = await response.data
-			console.log(responseData)
 			dispatch({ type: 'USER_FULL_NAME', payload: responseData })
 		} catch (error) {
 			console.log(error.response.data.message)

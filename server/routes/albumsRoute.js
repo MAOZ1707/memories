@@ -1,21 +1,24 @@
-const express = require('express');
+const express = require('express')
+const cors = require('cors')
 
-const { body } = require('express-validator');
+const app = express()
 
-const checkAuth = require('../middleware/checkAuth');
+const { body } = require('express-validator')
 
-const albumsController = require('../controller/albumsController');
+const checkAuth = require('../middleware/checkAuth')
 
-const uploadS3 = require('../middleware/multer');
+const albumsController = require('../controller/albumsController')
 
-const router = express.Router();
+const uploadS3 = require('../middleware/multer')
 
-router.use(checkAuth);
+const router = express.Router()
+
+router.use(checkAuth)
 
 router
 	.route('/user/:id')
 	.get(albumsController.getAlbumsByUserId)
-	.delete(albumsController.deleteAllAlbumsByUserId);
+	.delete(albumsController.deleteAllAlbumsByUserId)
 
 router
 	.route('/')
@@ -24,18 +27,21 @@ router
 		body('address').notEmpty().isString(),
 		uploadS3.single('image'),
 		albumsController.createAlbums
-	);
+	)
 
+app.options('/:id', cors())
 router
 	.route('/:id')
 	.get(albumsController.getAlbumById)
-	.patch(
+	.put(
 		body('title').notEmpty().isString(),
 		body('description').notEmpty().isString(),
+		cors(),
 		albumsController.updateAlbumById
 	)
-	.delete(albumsController.deleteAlbumAndImagesById);
+	.delete(albumsController.deleteAlbumAndImagesById)
 
-router.route('/:id/like-album').patch(albumsController.likeAlbum);
+app.options('/:id/like-album', cors())
+router.route('/:id/like-album').put(cors(), albumsController.likeAlbum)
 
-module.exports = router;
+module.exports = router
